@@ -4,8 +4,10 @@ import org.leedh.user.dao.MemberDAO;
 import org.leedh.user.vo.EmpVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional(rollbackFor = {Exception.class})
 public class MemberServiceImpl implements MemberService {
 	
 	private final MemberDAO dao;
@@ -17,9 +19,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public void register(EmpVO vo) throws Exception {
-		
 		dao.register(vo);
-		
 	}
 
 	@Override
@@ -30,12 +30,10 @@ public class MemberServiceImpl implements MemberService {
 	//Controller에서 보내는 파라미터들을 memberUpdate(EmpVO vo)로 받고
 	@Override
 	public void memberUpdate(EmpVO vo) throws Exception {
-		
 		//받은 vo를 DAO로 보내줍니다.
 		dao.memberUpdate(vo);
-		
 	}
-	
+
 	// 업데이트에서 처리한 내용과 같습니다.
 	@Override
 	public void memberDelete(EmpVO vo) throws Exception {
@@ -53,5 +51,9 @@ public class MemberServiceImpl implements MemberService {
 	public int idChk(EmpVO vo) throws Exception {
 		return dao.idChk(vo);
 	}
-	
+
+	@Override
+	public String getPw(String id) throws Exception {
+		return dao.getPw(id);
+	}
 }

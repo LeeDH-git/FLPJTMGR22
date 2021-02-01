@@ -1,55 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
-  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="memberMapper">
-	<!-- 회원가입 -->
-	<insert id="register">
-	    INSERT INTO MP_MEMBER(   USERID 
-	   					       , USERPASS 
-	   					       , USERNAME 	)
-	                  VALUES(    #{userId} 
-	                 		   , #{userPass}
-	                 		   , #{userName})
-   
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="UserMapper">
+    <!-- 회원가입 -->
+    <insert id="register">
+        INSERT
+        ALL
+        INTO FL_EMP
+        VALUES (
+        #{empNo},
+        #{empNm},
+        #{empPw},
+        #{empEmail},
+        #{empPhoneNo},
+        #{empEmerNo},
+        #{empJoinDate},
+        #{pjtPosC},
+        #{pjtLvC}
+        )
+        INTO
+        FL_EMP_ADMIN
+        (
+        EMP_NO,
+        EMP_EMAIL,
+        JOIN_DATE,
+        EMP_AUTH
+        )
+        VALUES
+        (
+        #{empNo},
+        #{empEmail},
+        to_char
+        (
+        sysdate,
+        'yyyy.mm.dd hh24:mi'
+        ),
+        'EMP'
+        )
+        SELECT *
+        FROM dual
     </insert>
-    
+
     <!-- 로그인 -->
-	<select id="login" resultType="kr.co.vo.MemberVO">
-		SELECT USERID, USERPASS, USERNAME
-		  FROM MP_MEMBER
-		 WHERE USERID = #{userId}
-		 <!--  AND USERPASS = #{userPass} -->
-	</select>
-	
-	
-	<!-- 회원정보 수정 -->
-	<update id="memberUpdate">
-		UPDATE MP_MEMBER SET 
-		<!-- USERPASS = #{userPass}, -->
-		USERNAME = #{userName}
-		WHERE USERID = #{userId}
-	</update>
-	
-	<!-- 회원탈퇴 -->
-	<delete id="memberDelete">
-		DELETE FROM MP_MEMBER
-		WHERE USERID = #{userId}
-		 <!--  AND USERPASS = #{userPass} --> 
-	</delete>
-	
-	<!-- 패스워드 체크 -->
-	<select id="passChk" resultType="int">
-		SELECT COUNT(*) FROM MP_MEMBER
-		WHERE USERID = #{userId}
-		  AND USERPASS = #{userPass}
-	</select>
-	
-		<!-- 아이디 중복 체크 -->
-	<select id="idChk" resultType="int">
-		SELECT COUNT(*) FROM MP_MEMBER
-		WHERE USERID = #{userId}
-	</select>
+    <select id="login" resultType="org.leedh.user.vo.EmpVO">
+        SELECT EMP_EMAIL, EMP_PW, EMP_PW
+        FROM FL_EMP
+        WHERE EMP_EMAIL = #{empEmail}
+        <!--  AND USERPASS = #{userPass} -->
+    </select>
+
+    <!-- 회원정보 수정 -->
+    <update id="memberUpdate">
+        UPDATE MP_MEMBER SET
+        <!-- USERPASS = #{userPass}, -->
+        USERNAME = #{userName}
+        WHERE USERID = #{userId}
+    </update>
+
+    <!-- 회원탈퇴 -->
+    <delete id="memberDelete">
+        DELETE FROM MP_MEMBER
+        WHERE USERID = #{userId}
+        <!--  AND USERPASS = #{userPass} -->
+    </delete>
+
+    <!-- 패스워드 체크 -->
+    <select id="passChk" resultType="int">
+        SELECT COUNT(*)
+        FROM MP_MEMBER
+        WHERE USERID = #{userId}
+          AND USERPASS = #{userPass}
+    </select>
+
+    <!-- 아이디 중복 체크 -->
+    <select id="idChk" resultType="int">
+        SELECT COUNT(*)
+        FROM FL_EMP
+        WHERE EMP_EMAIL = #{empEmail}
+    </select>
+
+    <select id="getPw" resultType="String">
+        select EMP_PW
+        from FL_EMP
+        where EMP_EMAIL = #{empEmail}
+    </select>
+
 </mapper>
 
 

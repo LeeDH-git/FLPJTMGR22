@@ -8,6 +8,9 @@ public interface MemberService {
 
     EmpVO login(EmpVO vo) throws Exception;
 
+    // 비밀번호 가져오기
+    String getPw(String id) throws Exception;
+
     void memberUpdate(EmpVO vo) throws Exception;
 
     void memberDelete(EmpVO vo) throws Exception;

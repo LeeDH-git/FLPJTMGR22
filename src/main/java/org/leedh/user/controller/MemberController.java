@@ -1,5 +1,6 @@
 package org.leedh.user.controller;
 
+import org.leedh.user.dao.MemberDAO;
 import org.leedh.user.service.MemberService;
 import org.leedh.user.vo.EmpVO;
 import org.slf4j.Logger;
@@ -15,17 +16,19 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpSession;
 
 @Controller
-@RequestMapping("/user/*")
+@RequestMapping("/user")
 public class MemberController {
     private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 
     private final MemberService service;
+    private final MemberDAO dao;
     BCryptPasswordEncoder pwdEncoder;
 
     @Autowired
-    public MemberController(MemberService service, BCryptPasswordEncoder pwdEncoder) {
+    public MemberController(MemberService service, MemberDAO dao, BCryptPasswordEncoder pwdEncoder) {
         this.service = service;
         this.pwdEncoder = pwdEncoder;
+        this.dao = dao;
     }
 
 
@@ -55,27 +58,47 @@ public class MemberController {
         } catch (Exception e) {
             throw new RuntimeException();
         }
-        return "redirect:/";
+        return "redirect:/main";
     }
 
     // 로그인 post
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(EmpVO vo, HttpSession session, RedirectAttributes rttr) throws Exception {
-        logger.info("post login");
 
-        session.getAttribute("member");
-        EmpVO login = service.login(vo);
-        boolean pwdMatch = pwdEncoder.matches(vo.getEmpPw(), login.getEmpPw());
+        String id = vo.getEmpEmail();
+        String password = dao.getPw(id);
 
-        if (login != null && pwdMatch == true) {
-            session.setAttribute("member", login);
-        } else {
-            session.setAttribute("member", null);
-            rttr.addFlashAttribute("msg", false);
+        boolean result = pwdEncoder.matches(vo.getEmpPw(), password);
+        //입력된 값과 password가 같을 경우
+        if (result) {
+            //login에 암호화 된 password를 담아준다
+            vo.setEmpPw(password);
+            service.login(vo);
         }
 
+        return "redirect:/main";
 
-        return "redirect:/";
+
+        //   logger.info("post login");
+//
+//        session.getAttribute("user");
+//        EmpVO login = service.login(vo);
+//        boolean pwdMatch;
+//
+//        if (login != null) {
+//            pwdMatch = pwdEncoder.matches(vo.getEmpPw(), login.getEmpPw());
+//            System.out.println(vo.getEmpPw());
+//        } else {
+//            pwdMatch = false;
+//        }
+//
+//        if(pwdMatch == true) {
+//            session.setAttribute("user", login);
+//        } else {
+//            session.setAttribute("user", null);
+//            rttr.addFlashAttribute("msg", false);
+//        }
+
     }
 
     // 로그아웃 post
@@ -90,7 +113,7 @@ public class MemberController {
     // 회원정보 수정 get
     @RequestMapping(value = "/memberUpdateView", method = RequestMethod.GET)
     public String registerUpdateView() throws Exception {
-        return "member/memberUpdateView";
+        return "user/memberUpdateView";
     }
 
     // 회원정보 수정  post

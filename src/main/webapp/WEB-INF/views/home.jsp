@@ -13,27 +13,6 @@
     <%@ include file="/resources/plugin/plugin.jsp" %>
 
 </head>
-<a href="${pageContext.request.contextPath}/">게시판</a><br/>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("#logoutBtn").on("click", function () {
-            location.href = "member/logout";
-        })
-        $("#registerBtn").on("click", function () {
-            location.href = "member/register";
-        })
-
-
-        $("#memberUpdateBtn").on("click", function () {
-            location.href = "member/memberUpdateView";
-        })
-
-        $("#memberDeleteBtn").on("click", function () {
-            location.href = "member/memberDeleteView";
-        })
-
-    })
-</script>
 <body class="bg-primary">
 <div id="layoutAuthentication">
     <div id="layoutAuthentication_content">
@@ -45,8 +24,8 @@
                             <div class="card-header"><h3 class="text-center font-weight-light my-4">FocusLeader Project
                                 Manager</h3></div>
                             <div class="card-body">
-                                <form name="homeForm" action="${pageContext.request.contextPath}/login" method="post">
-                                    <c:if test="${member == null}">
+                                <form name="homeForm" action="${pageContext.request.contextPath}/user/login" method="post">
+                                    <c:if test="${user == null}">
                                     <div class="form-group">
                                         <label class="small mb-1" for="empEmail">이메일</label>
                                         <input class="form-control py-4" id="empEmail" name="empEmail" type="email"

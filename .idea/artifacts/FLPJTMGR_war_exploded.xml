@@ -1,10 +1,17 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="PRJWEB2:war exploded">
-    <output-path>$PROJECT_DIR$/out/artifacts/PRJWEB2_war_exploded</output-path>
+  <artifact type="exploded-war" name="FLPJTMGR:war exploded">
+    <output-path>$PROJECT_DIR$/target/FLPJTMGR-1.0-SNAPSHOT</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <exploded>true</exploded>
+        <module>FLPJTMGR</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="PRJWEB2" />
+          <element id="module-output" name="FLPJTMGR" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: org.springframework:spring-context:4.3.26.RELEASE" />
@@ -45,7 +52,10 @@
           <element id="library" level="project" name="Maven: org.springframework.security:spring-security-acl:5.0.6.RELEASE" />
         </element>
       </element>
-      <element id="javaee-facet-resources" facet="PRJWEB2/web/Web" />
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/target/FLPJTMGR-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="FLPJTMGR/web/Web" />
     </root>
   </artifact>
 </component>
