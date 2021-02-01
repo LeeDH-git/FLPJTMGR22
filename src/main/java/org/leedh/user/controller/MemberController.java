@@ -14,9 +14,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 
-/**
- * Handles requests for the application home page.
- */
 @Controller
 public class MemberController {
     private static final Logger logger = LoggerFactory.getLogger(MemberController.class);

@@ -1,14 +1,10 @@
 package org.leedh.user.vo;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 
-@Getter
-@Setter
-@ToString
+@Data
 public class EmpAdminVO {
     private int empNo;
     private LocalDateTime loginDate;
