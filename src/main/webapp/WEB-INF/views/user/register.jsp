@@ -62,7 +62,7 @@
 	</script>
 	<body>
 		<section id="container">
-			<form action="/member/register" method="post" id="regForm">
+			<form action="${pageContext.request.contextPath}/user/register" method="post" id="regForm">
 				<div class="form-group has-feedback">
 					<label class="control-label" for="userId">아이디</label>
 					<input class="form-control" type="text" id="userId" name="userId" />

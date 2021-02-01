@@ -15,6 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpSession;
 
 @Controller
+@RequestMapping("/user/*")
 public class MemberController {
     private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 
@@ -41,7 +42,7 @@ public class MemberController {
         int result = service.idChk(vo);
         try {
             if (result == 1) {
-                return "/member/register";
+                return "/user/register";
             } else if (result == 0) {
                 String inputPass = vo.getEmpPw();
                 String pwd = pwdEncoder.encode(inputPass);
@@ -113,7 +114,7 @@ public class MemberController {
     // 회원 탈퇴 get
     @RequestMapping(value = "/memberDeleteView", method = RequestMethod.GET)
     public String memberDeleteView() throws Exception {
-        return "member/memberDeleteView";
+        return "user/memberDeleteView";
     }
 
     // 회원 탈퇴 post
