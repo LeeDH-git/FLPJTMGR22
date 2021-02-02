@@ -5,6 +5,21 @@
 
 <mapper namespace="org.leedh.mapper.PjtMapper">
 
+    <resultMap id="projectResultMap" type="PjtVO">
+        <result property="pjtC" column="PJT_C"/>
+        <result property="pjtOrgC" column="PJT_ORG_C"/>
+        <result property="pjtDivC" column="PJT_DIV_C"/>
+        <result property="pjtStC" column="PJT_ST_C"/>
+        <result property="pjtClient" column="PJT_CLIENT"/>
+        <result property="pjtNm" column="PJT_NM"/>
+        <result property="pjtEmpList" column="PJT_EMP_LIST"/>
+        <result property="pjtPm" column="PJT_PM"/>
+        <result property="pjtStartDate" column="PJT_START_DATE"/>
+        <result property="pjtEndDate" column="PJT_END_DATE"/>
+        <result property="pjtEndYn" column="PJT_END_YN"/>
+    </resultMap>
+
+
     <!--프로젝트 등록-->
     <insert id="pjtRegister" parameterType="PjtVO">
 

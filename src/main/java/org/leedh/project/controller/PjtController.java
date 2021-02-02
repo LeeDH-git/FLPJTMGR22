@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
-
+import java.util.List;
 @Controller
 @RequestMapping("/project")
 
@@ -38,7 +38,15 @@ public class PjtController {
         rttr.addFlashAttribute("Message","PJT register success");
        return "redirect:/project/pjtRegister";
     }
-
+    
+    //프로젝트 조회(전체)
+    @RequestMapping(value = "/pjtShow", method = RequestMethod.GET)
+    public String pjt(Model model) throws Exception{
+    	
+    	List<PjtVO> pjtVo = pjtService.pjtShow();
+    	model.addAttribute("pjtList",pjtVo);
+    	return "/project/pjtShow";
+    }
     /*// 프로젝트 관리 페이지
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(@ModelAttribute("loginDTO") LoginDTO loginDTO) throws Exception {

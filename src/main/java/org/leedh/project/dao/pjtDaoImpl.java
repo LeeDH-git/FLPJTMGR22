@@ -6,7 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.leedh.project.vo.PjtVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
+import java.util.List;
 @Repository
 @Slf4j
 public class pjtDaoImpl implements PjtDao{
@@ -26,5 +26,11 @@ public class pjtDaoImpl implements PjtDao{
     public void register(PjtVO pjtVO) throws Exception {
         sqlSession.insert(NAMESPACE + ".pjtRegister", pjtVO);
         log.debug("pjtRegister error : " + pjtVO);
+    }
+    
+  //프로젝트 조회(전체)
+    @Override
+    public List<PjtVO> pjtShow() throws Exception{
+    	return sqlSession.selectList(NAMESPACE + ".pjtShow");
     }
 }

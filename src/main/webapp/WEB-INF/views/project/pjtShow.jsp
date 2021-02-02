@@ -136,39 +136,48 @@
 	<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 		<thead>
 		<tr>
-		  	<td><b>사번</b></td>
-			<td><b>이름</b></td>
-			<td><b>이메일</b></td>
-			<td><b>핸드폰 번호</b></td>
-			<td><b>비상 연락처</b></td>
-			<td><b>입사일</b></td>
-			<td><b>기술 등급</b></td>
-			<td><b>직위</b></td>
+		  	<td><b>프로젝트 코드</b></td>
+			<td><b>기관</b></td>
+			<td><b>업무분류</b></td>
+			<td><b>상태분류</b></td>
+			<td><b>고객명</b></td>
+			<td><b>프로젝트 명</b></td>
+			<td><b>투입인원</b></td>
+			<td><b>관리자명</b></td>
+			<td><b>시작일</b></td>
+			<td><b>종료일</b></td>
+			<td><b>종료여부</b></td>
 		</tr>
 		</thead>                                                  
 		<tfoot>
 		<tr>
-		  	<td><b>사번</b></td>
-			<td><b>이름</b></td>
-			<td><b>이메일</b></td>
-			<td><b>핸드폰 번호</b></td>
-			<td><b>비상 연락처</b></td>
-			<td><b>입사일</b></td>
-			<td><b>기술 등급</b></td>
-			<td><b>직위</b></td>
+		  	<td><b>프로젝트 코드</b></td>
+			<td><b>기관</b></td>
+			<td><b>업무분류</b></td>
+			<td><b>상태분류</b></td>
+			<td><b>고객명</b></td>
+			<td><b>프로젝트 명</b></td>
+			<td><b>투입인원</b></td>
+			<td><b>관리자명</b></td>
+			<td><b>시작일</b></td>
+			<td><b>종료일</b></td>
+			<td><b>종료여부</b></td>
 		</tr>
 		</tfoot>
 		<tbody>
-		<c:forEach var="item" items="${empList}" varStatus="vs">
+		<c:forEach var="item" items="${pjtList}" varStatus="vs">
 		<tr>
-		<td><c:out value="${item.empNo}"/></td>
-		<td><c:out value="${item.empNm}"/></td>
-		<td><c:out value="${item.empEmail}"/></td>
-		<td><c:out value="${item.empPhoneNo}"/></td>
-		<td><c:out value="${item.empEmerNo}"/></td>
-		<td><c:out value="${item.empJoinDate }"/></td>
-		<td><c:out value="${item.pjtPosC }"/></td>
-		<td><c:out value="${item.pjtLvC }"/></td>
+		<td><c:out value="${item.pjtC}"/></td>
+		<td><c:out value="${item.pjtOrgC}"/></td>
+		<td><c:out value="${item.pjtDivC}"/></td>
+		<td><c:out value="${item.pjtStC}"/></td>
+		<td><c:out value="${item.pjtClient}"/></td>
+		<td><c:out value="${item.pjtNm }"/></td>
+		<td><c:out value="${item.pjtEmpList}"/></td>
+		<td><c:out value="${item.pjtPm}"/></td>
+		<td><c:out value="${item.pjtStartDate}"/></td>
+		<td><c:out value="${item.pjtEndDate}"/></td>
+		<td><c:out value="${item.pjtEndYn}"/></td>
 		</tr>
 		</c:forEach>
 		</tbody>
