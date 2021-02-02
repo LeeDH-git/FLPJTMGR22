@@ -146,18 +146,7 @@
 			<td><b>직위</b></td>
 		</tr>
 		</thead>                                                  
-		<tfoot>
-		<tr>
-		  	<td><b>사번</b></td>
-			<td><b>이름</b></td>
-			<td><b>이메일</b></td>
-			<td><b>핸드폰 번호</b></td>
-			<td><b>비상 연락처</b></td>
-			<td><b>입사일</b></td>
-			<td><b>기술 등급</b></td>
-			<td><b>직위</b></td>
-		</tr>
-		</tfoot>
+
 		<tbody>
 		<c:forEach var="item" items="${empList}" varStatus="vs">
 		<tr>

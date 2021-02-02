@@ -102,7 +102,7 @@ public class MemberController {
     // 회원정보 수정 get
     @RequestMapping(value = "/memberUpdateView", method = RequestMethod.GET)
     public String registerUpdateView() throws Exception {
-        return "user/memberUpdateView";
+        return "user/nouse/memberUpdateView";
     }
 
     // 회원정보 수정  post
@@ -126,7 +126,7 @@ public class MemberController {
     // 회원 탈퇴 get
     @RequestMapping(value = "/memberDeleteView", method = RequestMethod.GET)
     public String memberDeleteView() throws Exception {
-        return "user/memberDeleteView";
+        return "user/nouse/memberDeleteView";
     }
 
     // 회원 탈퇴 post
