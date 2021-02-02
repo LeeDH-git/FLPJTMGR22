@@ -46,9 +46,7 @@
                                         </div>
                                         <!-- /.col -->
                                         <div class="col-8">
-                                            <button type="submit" class="btn btn-primary btn-block btn-flat">
-                                                <i class="btn btn-primary"></i> 로그인
-                                            </button>
+                                            <button type="submit" class="btn btn-primary">로그인</button>
                                         </div>
                                         <!-- /.col -->
                                     </div>
