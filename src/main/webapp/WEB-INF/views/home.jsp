@@ -47,7 +47,7 @@
                                         <!-- /.col -->
                                         <div class="col-8">
                                             <button type="submit" class="btn btn-primary btn-block btn-flat">
-                                                <i class="fa fa-sign-in"></i> 로그인
+                                                <i class="btn btn-primary"></i> 로그인
                                             </button>
                                         </div>
                                         <!-- /.col -->

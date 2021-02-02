@@ -12,9 +12,9 @@ import java.util.Date;
 import java.util.Locale;
 
 @Controller
-public class HomeController {
+public class BasicController {
 
-    private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+    private static final Logger logger = LoggerFactory.getLogger(BasicController.class);
 
     /**
      * Simply selects the home view to render by returning its name.
@@ -37,6 +37,7 @@ public class HomeController {
     public String main() {
         return "/project/main";
     }
+
 
 
 }

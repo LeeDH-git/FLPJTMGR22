@@ -45,7 +45,7 @@ public class MemberController {
         int result = service.idChk(vo);
         try {
             if (result == 1) {
-                return "/user/register";
+                return "redirect:/user/register";
             } else if (result == 0) {
                 String inputPass = vo.getEmpPw();
                 String pwd = pwdEncoder.encode(inputPass);
@@ -67,37 +67,17 @@ public class MemberController {
 
         String id = vo.getEmpEmail();
         String password = dao.getPw(id);
-
         boolean result = pwdEncoder.matches(vo.getEmpPw(), password);
-        //입력된 값과 password가 같을 경우
-        if (result) {
-            //login에 암호화 된 password를 담아준다
+
+        if (id.equals("")) {
+            return "redirect:/";
+        } else if (result) {
+            //입력된 값과 password가 같을 경우 login에 암호화 된 password를 담아준다
             vo.setEmpPw(password);
             service.login(vo);
         }
 
         return "redirect:/main";
-
-
-        //   logger.info("post login");
-//
-//        session.getAttribute("user");
-//        EmpVO login = service.login(vo);
-//        boolean pwdMatch;
-//
-//        if (login != null) {
-//            pwdMatch = pwdEncoder.matches(vo.getEmpPw(), login.getEmpPw());
-//            System.out.println(vo.getEmpPw());
-//        } else {
-//            pwdMatch = false;
-//        }
-//
-//        if(pwdMatch == true) {
-//            session.setAttribute("user", login);
-//        } else {
-//            session.setAttribute("user", null);
-//            rttr.addFlashAttribute("msg", false);
-//        }
 
     }
 
