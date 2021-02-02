@@ -65,6 +65,35 @@
         where EMP_EMAIL = #{empEmail}
     </select>
 
+
+	<!-- 유저정보 호출(조건) -->
+  	<select id="selectEmp" parameterType="EmpVO" resultType="org.leedh.user.vo.EmpVO">
+		SELECT
+		EMP_NO as empNo, 
+		EMP_NM as empNm,
+		EMP_EMAIL as empEmail, 
+		EMP_PHONE_NO as empPhoneNo,
+		EMP_EMER_NO as empEmerNo,
+		EMP_JOIN_DATE as empJoinDate,
+		PJT_POS_C as pjtPosC,
+		PJT_LV_C as pjtLvC
+		FROM FL_EMP
+		WHERE EMP_NO=112233
+	</select>
+	
+	<!-- 유저정보 전체 호출 -->
+    	<select id="empShow" parameterType="EmpVO" resultType="org.leedh.user.vo.EmpVO">
+		SELECT 
+		EMP_NO as empNo, 
+		EMP_NM as empNm,
+		EMP_EMAIL as empEmail, 
+		EMP_PHONE_NO as empPhoneNo,
+		EMP_EMER_NO as empEmerNo,
+		EMP_JOIN_DATE as empJoinDate,
+		PJT_POS_C as pjtPosC,
+		PJT_LV_C as pjtLvC
+		FROM FL_EMP
+	</select>
 </mapper>
 
 

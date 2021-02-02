@@ -4,7 +4,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.leedh.user.vo.EmpVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
+import java.util.List;
 
 @Repository
 public class MemberDAOImpl implements MemberDAO {
@@ -63,6 +63,18 @@ public class MemberDAOImpl implements MemberDAO {
     public String getPw(String id) throws Exception {
         return sql.selectOne(NAMESPACE + ".getPw" , id);
     }
+    
+  //직원 정보(한명) 조회
+    @Override
+    public EmpVO selectEmp() throws Exception{
+    	return sql.selectOne(NAMESPACE + ".selectEmp");
+    }
+  //직원 정보(전체) 조회
+     @Override
+   public List<EmpVO> empShow() throws Exception{
+	   
+	   return sql.selectList(NAMESPACE + ".empShow");
+   }
 }
 
 

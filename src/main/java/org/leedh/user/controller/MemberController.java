@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import org.springframework.ui.Model;
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 @Controller
@@ -154,4 +157,25 @@ public class MemberController {
         return result;
     }
 
+    //사원 한명 정보불러오기
+    
+  @RequestMapping(value = "/empInfo", method = RequestMethod.GET)
+    public String empInfo(EmpVO empVo,Model model) throws Exception{
+
+    	empVo = service.selectEmp();
+    	model.addAttribute("emp",empVo);
+    	
+    	return "/user/empInfo";
+    }
+  
+  //사원 전체 정보 불러오기
+  @RequestMapping(value = "/empShow", method = RequestMethod.GET)
+  public String empShow(Model model) throws Exception{
+	  
+
+  	List<EmpVO> empVo = service.empShow();
+  	model.addAttribute("empList",empVo);
+  		
+	 return "/user/empShow";
+  }
 }

@@ -5,7 +5,7 @@ import org.leedh.user.vo.EmpVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
+import java.util.List;
 @Service
 @Transactional(rollbackFor = {Exception.class})
 public class MemberServiceImpl implements MemberService {
@@ -56,4 +56,14 @@ public class MemberServiceImpl implements MemberService {
 	public String getPw(String id) throws Exception {
 		return dao.getPw(id);
 	}
+	
+    @Override
+    public EmpVO selectEmp() throws Exception{
+    	return dao.selectEmp();
+    }
+    
+    @Override
+    public List<EmpVO> empShow() throws Exception{
+    	return dao.empShow();
+    }
 }
