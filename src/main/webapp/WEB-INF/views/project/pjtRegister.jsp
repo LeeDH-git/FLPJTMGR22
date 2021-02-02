@@ -4,16 +4,11 @@
 <head>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <meta name="description" content=""/>
     <meta name="author" content=""/>
-    <title>Focusleader Project Manager 프로젝트 등록</title>
-    <link href="${pageContext.request.contextPath}/resources/dist/css/styles.css" rel="stylesheet"/>
-    <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"
-            crossorigin="anonymous"></script>
-
+    <title>Focusleader Project Manager</title>
+    <%@ include file="/resources/plugin/plugin.jsp" %>
 </head>
 <body class="bg-primary">
 <div id="layoutAuthentication">
