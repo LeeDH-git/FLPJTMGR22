@@ -11,7 +11,7 @@
 </head>
 <body class="sb-nav-fixed">
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-    <a class="navbar-brand">Project Manager</a>
+    <a class="navbar-brand" href="${pageContext.request.contextPath}/main">Project Manager</a>
     <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i>
     </button>
     <!-- Navbar Search-->
@@ -44,9 +44,14 @@
                 <div class="nav">
                     <div class="sb-sidenav-menu-heading">Core</div>
                     <a class="nav-link"
+                    	href = "${pageContext.request.contextPath}/project/pjtShow">
+                    	<div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        프로젝트정보
+                    </a>
+                    <a class="nav-link"
                        href="${pageContext.request.contextPath}/user/empShow">
-                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                        Dashboard
+                        <div class="sb-nav-link-icon"><i class="fas fa-angle-down"></i></div>
+                        직원정보
                     </a>
                     <div class="sb-sidenav-menu-heading">Interface</div>
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts"
