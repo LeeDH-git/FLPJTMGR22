@@ -25,7 +25,7 @@
                                 Manager</h3></div>
                             <div class="card-body">
                                 <form name="homeForm" action="${pageContext.request.contextPath}/user/login" method="post">
-                                    <c:if test="${user == null}">
+
                                     <div class="form-group">
                                         <label class="small mb-1" for="empEmail">이메일</label>
                                         <input class="form-control py-4" id="empEmail" name="empEmail" type="email"
@@ -62,10 +62,6 @@
                                 <div class="small"><a href="${pageContext.request.contextPath}/user/register">계정이 없으신가요?
                                     회원가입!</a></div>
                             </div>
-                            </c:if>
-                            <c:if test="${msg == false}">
-                                <p style="color: red;">로그인 실패! 아이디와 비밀번호 확인해주세요.</p>
-                            </c:if>
                         </div>
                     </div>
                 </div>

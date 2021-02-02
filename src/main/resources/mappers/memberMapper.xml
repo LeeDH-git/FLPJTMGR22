@@ -6,40 +6,19 @@
     <!-- 회원가입 -->
     <insert id="register">
         INSERT
-        ALL
-        INTO FL_EMP
-        VALUES (
-        #{empNo},
-        #{empNm},
-        #{empPw},
-        #{empEmail},
-        #{empPhoneNo},
-        #{empEmerNo},
-        #{empJoinDate},
-        #{pjtPosC},
-        #{pjtLvC}
-        )
-        INTO
-        FL_EMP_ADMIN
-        (
-        EMP_NO,
-        EMP_EMAIL,
-        JOIN_DATE,
-        EMP_AUTH
-        )
-        VALUES
-        (
-        #{empNo},
-        #{empEmail},
-        to_char
-        (
-        sysdate,
-        'yyyy.mm.dd hh24:mi'
-        ),
-        'EMP'
-        )
-        SELECT *
-        FROM dual
+        ALL INTO FL_EMP
+        VALUES (#{empNo},
+                #{empNm},
+                #{empPw},
+                #{empEmail},
+                #{empPhoneNo},
+                #{empEmerNo},
+                #{empJoinDate},
+                #{pjtPosC},
+                #{pjtLvC} )
+        INTO FL_EMP_ADMIN (EMP_NO,EMP_EMAIL,JOIN_DATE,EMP_AUTH)
+        VALUES (#{empNo},#{empEmail},to_char ( sysdate,'yyyy.mm.dd hh24:mi' ),'EMP')
+        SELECT * FROM dual
     </insert>
 
     <!-- 로그인 -->

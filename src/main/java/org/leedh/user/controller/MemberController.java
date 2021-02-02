@@ -50,7 +50,6 @@ public class MemberController {
                 String inputPass = vo.getEmpPw();
                 String pwd = pwdEncoder.encode(inputPass);
                 vo.setEmpPw(pwd);
-
                 service.register(vo);
             }
             // 요기에서~ 입력된 아이디가 존재한다면 -> 다시 회원가입 페이지로 돌아가기
@@ -65,16 +64,23 @@ public class MemberController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(EmpVO vo, HttpSession session, RedirectAttributes rttr) throws Exception {
 
-        String id = vo.getEmpEmail();
-        String password = dao.getPw(id);
-        boolean result = pwdEncoder.matches(vo.getEmpPw(), password);
+        session.getAttribute("user");
 
-        if (id.equals("")) {
-            return "redirect:/";
-        } else if (result) {
-            //입력된 값과 password가 같을 경우 login에 암호화 된 password를 담아준다
-            vo.setEmpPw(password);
+        String id = vo.getEmpEmail();
+        String pw = dao.getPw(id);
+        logger.info("암호화 비밀번호 :" + pw);
+
+        String rawPw = vo.getEmpPw();
+        logger.info("입력된 비밀번호: " + rawPw);
+
+        if (pwdEncoder.matches(rawPw, pw)) {
+            logger.info("비밀번호 일치");
             service.login(vo);
+            String message = vo.getEmpNm();
+            session.setAttribute("user", message);
+        } else {
+            logger.info("비밀번호 불일치");
+            return "redirect:/";
         }
 
         return "redirect:/main";
