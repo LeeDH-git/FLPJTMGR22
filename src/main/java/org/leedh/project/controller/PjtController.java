@@ -36,7 +36,7 @@ public class PjtController {
     public String register(PjtVO pjtVO, RedirectAttributes rttr) throws Exception {
         pjtService.register(pjtVO);
         rttr.addFlashAttribute("Message","PJT register success");
-       return "redirect:/project/pjtRegister";
+       return "redirect:/main";
     }
     
     //프로젝트 조회(전체)

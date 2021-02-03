@@ -5,36 +5,20 @@
 
 <mapper namespace="org.leedh.mapper.PjtMapper">
 
-    <resultMap id="projectResultMap" type="PjtVO">
-        <result property="pjtC" column="PJT_C"/>
-        <result property="pjtOrgC" column="PJT_ORG_C"/>
-        <result property="pjtDivC" column="PJT_DIV_C"/>
-        <result property="pjtStC" column="PJT_ST_C"/>
-        <result property="pjtClient" column="PJT_CLIENT"/>
-        <result property="pjtNm" column="PJT_NM"/>
-        <result property="pjtEmpList" column="PJT_EMP_LIST"/>
-        <result property="pjtPm" column="PJT_PM"/>
-        <result property="pjtStartDate" column="PJT_START_DATE"/>
-        <result property="pjtEndDate" column="PJT_END_DATE"/>
-        <result property="pjtEndYn" column="PJT_END_YN"/>
-    </resultMap>
-
 
     <!--프로젝트 등록-->
-    <insert id="pjtRegister">
+    <insert id="pjtRegister" >
 
-        insert into FL_PROJECT
-        values (#{pjtC},
-                #{pjtOrgC},
-                #{pjtDivC},
-                #{pjtStC},
-                #{pjtClient},
-                #{pjtNm},
-                #{pjtEmpList},
-                #{pjtPm},
-                #{pjtStartDate},
-                #{pjtEndDate},
-                #{pjtEndYn})
+        INSERT ALL
+        INTO FL_PJT_CODE
+            VALUES (#{pjtC},#{pjtDivC},#{pjtStC},#{pjtOrgC})
+        INTO FL_PROJECT
+            VALUES (#{pjtC},#{pjtClient},#{pjtNm},
+            #{pjtEmpList},#{pjtPm},#{pjtStartDate},
+            #{pjtEndDate},#{pjtEndYn},#{pjtStC})
+
+        SELECT * FROM dual
+
     </insert>
 
 
