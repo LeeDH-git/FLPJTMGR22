@@ -47,7 +47,8 @@
 
 	<!-- Root Logger -->
 	<root>
-		<priority value="info" />
+<!--	<priority value="info"/>		-->
+		<priority value="debug" />
 		<appender-ref ref="console" />
 	</root>
 
