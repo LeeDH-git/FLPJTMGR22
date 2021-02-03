@@ -32,4 +32,10 @@ public class PjtServiceImpl implements PjtService{
     public List<PjtVO> pjtShow() throws Exception{
     	return projectDao.pjtShow();
     }
+    
+    // 프로젝트 삭제
+    @Override
+    public void delete(String no) {
+        projectDao.delete(no);
+    }
 }

@@ -12,5 +12,8 @@ public interface PjtService {
 	
 	//프로젝트 조회(전체)
 	List<PjtVO> pjtShow() throws Exception;
-	
+
+	//프로젝트 삭제
+	void delete(String no);//삭제
+
 }

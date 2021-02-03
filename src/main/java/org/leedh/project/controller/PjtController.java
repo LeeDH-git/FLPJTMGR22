@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -54,4 +55,24 @@ public class PjtController {
     }*/
 
       //  model.addAttribute("PJT", pjtVO);
+
+    // 프로젝트 삭제
+    @RequestMapping(value = "/delete", method = RequestMethod.GET)
+    public String delete(String no) throws Exception {
+        pjtService.delete(no);
+        return "redirect:/project/pjtShow";
+    }
+
+    // 프로젝트 선택삭제
+    @RequestMapping(value = "/delete")
+    public String checkDelete(HttpServletRequest request) throws Exception {
+
+        String[] ajaxMsg = request.getParameterValues("valueArr");
+
+        for (String s : ajaxMsg) {
+            pjtService.delete(s);
+        }
+        return "redirect:/project/pjtShow";
+    }
+
 }

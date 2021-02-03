@@ -11,6 +11,7 @@ import lombok.ToString;
 public class PjtVO {
 
 /*
+	프로젝트 번호 			no
     프로젝트코드				pjtC;
     기관종류					pjtOrgC;
     프로젝트종류				pjtDivC;
@@ -23,7 +24,7 @@ public class PjtVO {
 	프로젝트종료일 			pjtEndDate;
 	프로젝트종료여부			pjtEndYn
 */
-	
+	private int no;
 	private String pjtC;
 	private String pjtOrgC;
 	private String pjtDivC;

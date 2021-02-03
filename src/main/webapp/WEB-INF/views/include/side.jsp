@@ -31,6 +31,8 @@
                     <nav class="sb-sidenav-menu-nested nav">
                         <a class="nav-link" href="${pageContext.request.contextPath}/project/pjtRegister">프로젝트 등록</a>
                         <a class="nav-link" href="${pageContext.request.contextPath}/project/pjtShow">프로젝트 조회</a>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/project/pjtShow">프로젝트 수정</a>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/project/pjtShow">프로젝트 삭제</a>
                     </nav>
                 </div>
 

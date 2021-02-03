@@ -33,4 +33,10 @@ public class pjtDaoImpl implements PjtDao{
     public List<PjtVO> pjtShow() throws Exception{
     	return sqlSession.selectList(NAMESPACE + ".pjtShow");
     }
+
+    // 삭제 하기
+    @Override
+    public void delete(String no){
+        sqlSession.delete(NAMESPACE + ".delete", no);
+    }
 }

@@ -35,6 +35,7 @@
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                             <tr>
+                                <td><b><input id="allCheck" type="checkbox" name="allCheck"/></b></td>
                                 <td><b>프로젝트 코드</b></td>
                                 <td><b>기관</b></td>
                                 <td><b>업무분류</b></td>
@@ -51,6 +52,7 @@
                             <tbody>
                             <c:forEach var="item" items="${pjtList}" varStatus="vs">
                                 <tr>
+                                    <td class="checkbox"><input name="RowCheck" type="checkbox" value="${item.no}"/></td>
                                     <td><c:out value="${item.pjtC}"/></td>
                                     <td><c:out value="${item.pjtOrgC}"/></td>
                                     <td><c:out value="${item.pjtDivC}"/></td>
@@ -66,6 +68,9 @@
                             </c:forEach>
                             </tbody>
                         </table>
+                        <div>
+                            <input type="button" value="선택삭제" class="btn btn-outline-info" onclick="deleteValue()">
+                        </div>
                     </div>
                 </div>
             </div>

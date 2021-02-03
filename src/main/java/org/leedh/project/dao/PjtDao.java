@@ -9,5 +9,12 @@ public interface PjtDao {
 	
 	//프로젝트 조회(전체)
 	List<PjtVO> pjtShow() throws Exception;
-	
+
+	//프로젝트 삭제
+	void deletePjtCode(String no);
+
+	void deletePjt(String no);
+
+
+
 }

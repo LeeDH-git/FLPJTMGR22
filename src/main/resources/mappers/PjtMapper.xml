@@ -37,4 +37,15 @@
 
     </select>
 
+    <!--  회원 삭제  -->
+    <delete id="deletePjtCode">
+        delete from FL_PJT_CODE
+        where no= #{no}
+    </delete>
+
+    <delete id="deletePjt">
+        delete from FL_PJT_CODE
+        where no= #{no}
+    </delete>
+
 </mapper>

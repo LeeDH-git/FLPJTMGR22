@@ -30,4 +30,6 @@ public interface MemberDAO {
     
     //직원 정보(전체) 조회
     List<EmpVO> empShow() throws Exception;
+
+
 }
