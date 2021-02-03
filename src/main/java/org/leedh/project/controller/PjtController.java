@@ -13,14 +13,14 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
+
 @Controller
 @RequestMapping("/project")
-
 public class PjtController {
 	
 	private final PjtService pjtService;
 	
-		@Autowired
+	@Autowired
 	public PjtController(PjtService pjtService) {
 		this.pjtService = pjtService;	
 	}

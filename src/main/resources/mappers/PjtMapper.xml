@@ -5,21 +5,6 @@
 
 <mapper namespace="org.leedh.mapper.PjtMapper">
 
-    <resultMap id="projectResultMap" type="PjtVO">
-        <result property="pjtC" column="PJT_C"/>
-        <result property="pjtOrgC" column="PJT_ORG_C"/>
-        <result property="pjtDivC" column="PJT_DIV_C"/>
-        <result property="pjtStC" column="PJT_ST_C"/>
-        <result property="pjtClient" column="PJT_CLIENT"/>
-        <result property="pjtNm" column="PJT_NM"/>
-        <result property="pjtEmpList" column="PJT_EMP_LIST"/>
-        <result property="pjtPm" column="PJT_PM"/>
-        <result property="pjtStartDate" column="PJT_START_DATE"/>
-        <result property="pjtEndDate" column="PJT_END_DATE"/>
-        <result property="pjtEndYn" column="PJT_END_YN"/>
-    </resultMap>
-
-
     <!--프로젝트 등록-->
     <insert id="pjtRegister" parameterType="PjtVO">
 
@@ -37,5 +22,22 @@
                 #{pjtEndYn})
     </insert>
 
+
+	<!-- 프로젝트 전체 호출 -->
+    	<select id="pjtShow" parameterType="PjtVO" resultType="org.leedh.project.vo.PjtVO">
+			SELECT 
+			PJT_C as pjtC, 
+			PJT_ORG_C as pjtOrgC,
+			PJT_DIV_C as pjtDivC, 
+			PJT_ST_C as pjtStC,
+			PJT_CLIENT as pjtClient,
+			PJT_NM as pjtNm,
+			PJT_EMP_LIST as pjtEmpList,
+			PJT_PM as pjtPm,
+			PJT_START_DATE as pjtStartDate,
+			PJT_End_DATE as pjtEndDate,
+			PJT_END_YN as pjtEndYn
+			FROM FL_PROJECT
+	</select>
 
 </mapper>

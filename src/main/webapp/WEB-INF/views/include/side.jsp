@@ -41,22 +41,23 @@
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
 
-                <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+                  <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
 
-                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseAuth"
-                           aria-expanded="false" aria-controls="pagesCollapseAuth">
-                            직원 관리
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                          <!--    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseAuth"
+                           aria-expanded="false" aria-controls="pagesCollapseAuth">-->
+                           		<a class="nav-link" href="${pageContext.request.contextPath}/user/register">직원 등록</a>
+                                <a class="nav-link" href="${pageContext.request.contextPath}/user/empShow">직원 조회</a>
+                            <!--  <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div> -->
                         </a>
 
-                        <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne"
+                       <!--   <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne"
                              data-parent="#sidenavAccordionPages">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="${pageContext.request.contextPath}/user/register">직원 등록</a>
                                 <a class="nav-link" href="${pageContext.request.contextPath}/user/empShow">직원 조회</a>
                             </nav>
-                        </div>
+                        </div>-->
 
                         <%--                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">--%>
                         <%--                            Error--%>
