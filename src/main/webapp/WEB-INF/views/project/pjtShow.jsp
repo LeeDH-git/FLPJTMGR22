@@ -48,21 +48,6 @@
                                 <td><b>종료여부</b></td>
                             </tr>
                             </thead>
-                            <tfoot>
-                            <tr>
-                                <td><b>프로젝트 코드</b></td>
-                                <td><b>기관</b></td>
-                                <td><b>업무분류</b></td>
-                                <td><b>상태분류</b></td>
-                                <td><b>고객명</b></td>
-                                <td><b>프로젝트 명</b></td>
-                                <td><b>투입인원</b></td>
-                                <td><b>관리자명</b></td>
-                                <td><b>시작일</b></td>
-                                <td><b>종료일</b></td>
-                                <td><b>종료여부</b></td>
-                            </tr>
-                            </tfoot>
                             <tbody>
                             <c:forEach var="item" items="${pjtList}" varStatus="vs">
                                 <tr>

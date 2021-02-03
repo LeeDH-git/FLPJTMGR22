@@ -19,8 +19,8 @@ public interface MemberService {
 
     int idChk(EmpVO vo) throws Exception;
     
-  //직원 정보(한명) 조회
+    //직원 정보(한명) 조회
     EmpVO selectEmp() throws Exception;
-  //직원 정보(전체) 조회
+    //직원 정보(전체) 조회
     List<EmpVO> empShow() throws Exception;
 }

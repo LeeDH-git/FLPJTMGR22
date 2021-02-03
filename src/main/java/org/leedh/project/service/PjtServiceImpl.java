@@ -14,6 +14,8 @@ public class PjtServiceImpl implements PjtService{
 	
 
     private final PjtDao projectDao;
+    
+    
     @Autowired
     public PjtServiceImpl(PjtDao projectDao) {
         this.projectDao = projectDao;
