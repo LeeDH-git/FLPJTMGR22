@@ -6,7 +6,7 @@
 <mapper namespace="org.leedh.mapper.PjtMapper">
 
     <!--프로젝트 등록-->
-    <insert id="pjtRegister" parameterType="PjtVO">
+    <insert id="pjtRegister">
 
         insert into FL_PROJECT
         values (#{pjtC},
