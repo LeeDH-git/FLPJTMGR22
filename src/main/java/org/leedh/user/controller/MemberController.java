@@ -158,24 +158,27 @@ public class MemberController {
     }
 
     //사원 한명 정보불러오기
-    
-  @RequestMapping(value = "/empInfo", method = RequestMethod.GET)
-    public String empInfo(EmpVO empVo,Model model) throws Exception{
 
-    	empVo = service.selectEmp();
-    	model.addAttribute("emp",empVo);
-    	
-    	return "/user/empInfo";
+    @RequestMapping(value = "/empInfo", method = RequestMethod.GET)
+    public void empInfo() throws Exception{
+
+        logger.info("get empInfo");
+        // 매개변수 EmpVO empVo,Model model
+        //empVo = service.selectEmp();
+        //model.addAttribute("emp",empVo);
+
+        //return "/user/empInfo";
     }
-  
-  //사원 전체 정보 불러오기
-  @RequestMapping(value = "/empShow", method = RequestMethod.GET)
-  public String empShow(Model model) throws Exception{
-	  
 
-  	List<EmpVO> empVo = service.empShow();
-  	model.addAttribute("empList",empVo);
-  		
-	 return "/user/empShow";
-  }
+
+    //사원 전체 정보 불러오기
+    @RequestMapping(value = "/empShow", method = RequestMethod.GET)
+    public String empShow(Model model) throws Exception{
+
+
+        List<EmpVO> empVo = service.empShow();
+        model.addAttribute("empList",empVo);
+
+        return "/user/empShow";
+    }
 }

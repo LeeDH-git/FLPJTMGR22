@@ -49,8 +49,8 @@
 
                             <tbody>
                             <c:forEach var="item" items="${empList}" varStatus="vs">
-                                <tr>
-                                    <td><c:out value="${item.empNo}"/></td>
+                                <tr onClick="openChild();">
+                                    <td onClick="setChildText(${item.empNo})"><c:out value="${item.empNo}"/></td>
                                     <td><c:out value="${item.empNm}"/></td>
                                     <td><c:out value="${item.empEmail}"/></td>
                                     <td><c:out value="${item.empPhoneNo}"/></td>
@@ -67,11 +67,34 @@
             </div>
         </main>
 
+
         <!-- 하단 사이드 메뉴 부분 -->
         <c:import url="/WEB-INF/views/include/bottom.jsp"/>
 
     </div>
 </div>
+<script>
 
+    var openWin;
+
+    function openChild()
+    {
+        // window.name = "부모창 이름";
+        window.name = "parentForm";
+        // window.open("open할 window", "자식창 이름", "팝업창 옵션");
+
+        //	if(openWin == null)
+        //	{
+        openWin = window.open("/user/empInfo",
+            "childForm", "width=570, height=350");
+        //	}
+
+    }
+
+    function setChildText(empNoIndex){
+        //  if(openWin!=null)
+        openWin.document.getElementById("empNo").value = empNoIndex;
+    }
+</script>
 </body>
 </html>

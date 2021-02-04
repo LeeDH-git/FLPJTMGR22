@@ -10,7 +10,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Focusleader Project Manager 직원정보</title>
-    <link href="${pageContext.request.contextPath}/resources/dist/css/styles.css" rel="stylesheet" />
+    <%@ include file="/resources/plugin/plugin.jsp" %>
     <!-- <%--<link href="css/styles.css" rel="stylesheet" /> --%> -->
     <script
             src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"
@@ -28,45 +28,39 @@
                                 <h3 class="text-center font-weight-light my-4">직원정보</h3>
                             </div>
                             <div class="card-body">
-                                <form action="${pageContext.request.contextPath}/user/empInfo" method="get">
+                                <form>
                                     <div class=form-group">
                                         <label class="small mb-1" for="empNo">사원 번호 </label> <input
-                                            class="form-control py-4" id="empNo" name="empNo"type="text" disabled
-                                            value="${emp.empNo}">
+                                            class="form-control py-4" id="empNo" name="empNo" type="text" value = "${empNo}"/>
                                     </div>
                                     <!--    <div class="col-md-6"> -->
                                     <div class="form-group">
                                         <label class="small mb-1" for="empNm">이름</label> <input
-                                            class="form-control py-4" id="empNm" name="empNm" type="text" disabled
-                                            value="${emp.empNm}" />
+                                            class="form-control py-4" id="empNm" name="empNm" type="text" disabled/>
                                     </div>
                                     <div class="form-group">
                                         <lable class="small mb-1" for="empEmail">아이디
                                             (이메일)</lable>
                                         <input class="form-control py-4" id=empEmail name="empEmail"
-                                        " type="email" disabled aria-describedby="emailHelp"
-                                        value="${emp.empEmail }" />
+                                        " type="email" disabled aria-describedby="emailHelp"/>
 
                                     </div>
 
                                     <div class="form-group">
                                         <label class="small mb-1" for="empPhoneNo">휴대전화 번호</label>
-                                        <input class="form-control py-4" id="empPhoneNo" name="empPhoneNo"type="text" disabled
-                                               value="${emp.empPhoneNo }" />
+                                        <input class="form-control py-4" id="empPhoneNo" name="empPhoneNo"type="text" disabled/>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="small mb-1" for="empEmerNo">비상연락처</label>
                                         <input class="form-control py-4"
-                                               id="empEmerNo" name = "empEmerNo" type="tel" disabled
-                                               value="${emp.empEmerNo }" >
+                                               id="empEmerNo" name = "empEmerNo" type="tel" disabled/>
                                     </div>
 
                                     <div class="form-group">
 
                                         <label class="small mb-1" for="empJoinDate">입사일</label>
-                                        <input class= "form-control py" type='date' id='empJoinDate' name="empJoninDate" disabled
-                                               value="${emp.empJoinDate }">
+                                        <input class= "form-control py" type='date' id='empJoinDate' name="empJoninDate" disabled/>
                                         <!-- <input class="form-control py-4" id="inputJoinDate" type="text" placeholder="입사일 입력" /> -->
 
 
@@ -122,8 +116,8 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-<script src="${pageContext.request.contextPath}/resources/dist/js/scripts.js"></script>
-<script>
+<!--  <script src="${pageContext.request.contextPath}/resources/dist/js/scripts.js"></script>-->
+<!--  <script>
     document.getElementById('inputJoinDate').value = new Date().toISOString().substring(0, 10);;
     document.getElementById('inputJoinDate').min = new Date().toISOString().substring(0, 10);;
 </script>
@@ -131,5 +125,6 @@
     document.getElementById("pjtLvC").value = "${emp.pjtPosC}";
     document.getElementById("pjtPosC").value = "${emp.pjtLvC}";
 </script>
+-->
 </body>
 </html>
