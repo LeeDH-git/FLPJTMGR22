@@ -28,28 +28,28 @@
         WHERE EMP_EMAIL = #{empEmail}
     </select>
 
-    <!-- 회원정보 수정 -->
-    <update id="memberUpdate">
-        UPDATE MP_MEMBER SET
-        <!-- USERPASS = #{userPass}, -->
-        USERNAME = #{userName}
-        WHERE USERID = #{userId}
-    </update>
+<!--    &lt;!&ndash; 회원정보 수정 &ndash;&gt;-->
+<!--    <update id="memberUpdate">-->
+<!--        UPDATE MP_MEMBER SET-->
+<!--        &lt;!&ndash; USERPASS = #{userPass}, &ndash;&gt;-->
+<!--        USERNAME = #{userName}-->
+<!--        WHERE USERID = #{userId}-->
+<!--    </update>-->
 
-    <!-- 회원탈퇴 -->
-    <delete id="memberDelete">
-        DELETE FROM MP_MEMBER
-        WHERE USERID = #{userId}
-        <!--  AND USERPASS = #{userPass} -->
-    </delete>
+<!--    &lt;!&ndash; 회원탈퇴 &ndash;&gt;-->
+<!--    <delete id="memberDelete">-->
+<!--        DELETE FROM MP_MEMBER-->
+<!--        WHERE USERID = #{userId}-->
+<!--        &lt;!&ndash;  AND USERPASS = #{userPass} &ndash;&gt;-->
+<!--    </delete>-->
 
-    <!-- 패스워드 체크 -->
-    <select id="passChk" resultType="int">
-        SELECT COUNT(*)
-        FROM MP_MEMBER
-        WHERE USERID = #{userId}
-          AND USERPASS = #{userPass}
-    </select>
+<!--    &lt;!&ndash; 패스워드 체크 &ndash;&gt;-->
+<!--    <select id="passChk" resultType="int">-->
+<!--        SELECT COUNT(*)-->
+<!--        FROM MP_MEMBER-->
+<!--        WHERE USERID = #{userId}-->
+<!--          AND USERPASS = #{userPass}-->
+<!--    </select>-->
 
     <!-- 아이디 중복 체크 -->
     <select id="idChk" resultType="int">

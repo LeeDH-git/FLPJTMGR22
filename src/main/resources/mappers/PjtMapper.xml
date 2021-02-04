@@ -10,9 +10,9 @@
 
         INSERT ALL
         INTO FL_PJT_CODE
-            VALUES (#{pjtC},#{pjtDivC},#{pjtStC},#{pjtOrgC})
+            VALUES (SEQ_FLPJT_C_NO.NEXTVAL,#{pjtC},#{pjtDivC},#{pjtStC},#{pjtOrgC})
         INTO FL_PROJECT
-            VALUES (#{pjtC},#{pjtClient},#{pjtNm},
+            VALUES (SEQ_FLPJT_NO.nextval,#{pjtC},#{pjtClient},#{pjtNm},
                     #{pjtEmpList},#{pjtPm},#{pjtStartDate},
                     #{pjtEndDate},#{pjtEndYn},#{pjtStC})
         SELECT * FROM dual
@@ -24,6 +24,7 @@
     <select id="pjtShow" parameterType="PjtVO" resultType="PjtVO">
 
         SELECT
+            NO as no,
             PJT_C as pjtC,
             PJT_CLIENT as pjtClient,
             PJT_NM as pjtNm,
@@ -38,14 +39,18 @@
     </select>
 
     <!--  회원 삭제  -->
-    <delete id="deletePjtCode">
-        delete from FL_PJT_CODE
-        where no= #{no}
+    <delete id="deletePjtCode" >
+        DELETE
+            FL_PJT_CODE
+        WHERE
+            NO = #{no}
     </delete>
 
     <delete id="deletePjt">
-        delete from FL_PJT_CODE
-        where no= #{no}
+        DELETE
+            FL_PROJECT
+        WHERE
+            NO = #{no}
     </delete>
 
 </mapper>

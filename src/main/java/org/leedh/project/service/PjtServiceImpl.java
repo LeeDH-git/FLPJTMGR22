@@ -27,7 +27,7 @@ public class PjtServiceImpl implements PjtService{
     	projectDao.register(pjtVO);
     }
     
-  //프로젝트 조회(전체)
+    // 프로젝트 조회(전체)
     @Override
     public List<PjtVO> pjtShow() throws Exception{
     	return projectDao.pjtShow();
@@ -35,7 +35,14 @@ public class PjtServiceImpl implements PjtService{
     
     // 프로젝트 삭제
     @Override
-    public void delete(String no) {
-        projectDao.delete(no);
+    public void deletePjtCode(String no) {
+        projectDao.deletePjtCode(no);
     }
+
+    @Override
+    public void deletePjt(String no) {
+        projectDao.deletePjt(no);
+    }
+
+
 }

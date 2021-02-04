@@ -39,13 +39,8 @@ function deleteValue(){
                 valueArr : valueArr  // 보내고자 하는 data 변수 설정
             },
             success: function(jdata){
-                if(jdata === 1) {
                     alert("삭제 성공");
                     location.replace("pjtShow") //pjtShow 로 페이지 새로고침
-                }
-                else{
-                    alert("삭제 실패");
-                }
             }
         });
     }

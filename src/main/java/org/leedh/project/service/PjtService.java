@@ -2,6 +2,7 @@ package org.leedh.project.service;
 
 import org.leedh.project.vo.PjtVO;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 @Service
 
@@ -14,6 +15,7 @@ public interface PjtService {
 	List<PjtVO> pjtShow() throws Exception;
 
 	//프로젝트 삭제
-	void delete(String no);//삭제
+	void deletePjtCode(String no);
+	void deletePjt(String no);
 
 }

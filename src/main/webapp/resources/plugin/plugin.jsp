@@ -14,6 +14,5 @@
 <!-- iCheck -->
 <script src="${pageContext.request.contextPath}/resources/plugin/lib/iCheck/icheck.min.js"></script>
 
-<%-- 버튼 js lib --%>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/plugin/lib/pjtDelete.js"></script>
+<script src="${pageContext.request.contextPath}/resources/plugin/lib/pjtDelete.js"></script>
 

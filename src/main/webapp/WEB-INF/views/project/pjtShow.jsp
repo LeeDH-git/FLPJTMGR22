@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var='root' value="${pageContext.request.contextPath }/"/>
+<%@ include file="/resources/plugin/plugin.jsp" %>
 
 <!DOCTYPE html>
 <html>
@@ -11,7 +12,6 @@
     <meta name="description" content=""/>
     <meta name="author" content=""/>
     <title>Focusleader Project Manager</title>
-    <%@ include file="/resources/plugin/plugin.jsp" %>
 </head>
 <body class="sb-nav-fixed">
 
@@ -50,20 +50,20 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <c:forEach var="item" items="${pjtList}" varStatus="vs">
+                            <c:forEach var="pjtList" items="${pjtList}" varStatus="vs">
                                 <tr>
-                                    <td class="checkbox"><input name="RowCheck" type="checkbox" value="${item.no}"/></td>
-                                    <td><c:out value="${item.pjtC}"/></td>
-                                    <td><c:out value="${item.pjtOrgC}"/></td>
-                                    <td><c:out value="${item.pjtDivC}"/></td>
-                                    <td><c:out value="${item.pjtStC}"/></td>
-                                    <td><c:out value="${item.pjtClient}"/></td>
-                                    <td><c:out value="${item.pjtNm }"/></td>
-                                    <td><c:out value="${item.pjtEmpList}"/></td>
-                                    <td><c:out value="${item.pjtPm}"/></td>
-                                    <td><c:out value="${item.pjtStartDate}"/></td>
-                                    <td><c:out value="${item.pjtEndDate}"/></td>
-                                    <td><c:out value="${item.pjtEndYn}"/></td>
+                                    <td class="checkbox"><input name="RowCheck" type="checkbox" value="${pjtList.no}"/></td>
+                                    <td><c:out value="${pjtList.pjtC}"/></td>
+                                    <td><c:out value="${pjtList.pjtOrgC}"/></td>
+                                    <td><c:out value="${pjtList.pjtDivC}"/></td>
+                                    <td><c:out value="${pjtList.pjtStC}"/></td>
+                                    <td><c:out value="${pjtList.pjtClient}"/></td>
+                                    <td><c:out value="${pjtList.pjtNm }"/></td>
+                                    <td><c:out value="${pjtList.pjtEmpList}"/></td>
+                                    <td><c:out value="${pjtList.pjtPm}"/></td>
+                                    <td><c:out value="${pjtList.pjtStartDate}"/></td>
+                                    <td><c:out value="${pjtList.pjtEndDate}"/></td>
+                                    <td><c:out value="${pjtList.pjtEndYn}"/></td>
                                 </tr>
                             </c:forEach>
                             </tbody>
