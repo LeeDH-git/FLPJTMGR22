@@ -54,8 +54,6 @@
                                 <tr>
                                     <td class="checkbox"><input name="RowCheck" type="checkbox" value="${pjtList.no}"/></td>
                                     <td><c:out value="${pjtList.pjtC}"/></td>
-                                    <td><c:out value="${pjtList.pjtOrgC}"/></td>
-                                    <td><c:out value="${pjtList.pjtDivC}"/></td>
                                     <td><c:out value="${pjtList.pjtStC}"/></td>
                                     <td><c:out value="${pjtList.pjtClient}"/></td>
                                     <td><c:out value="${pjtList.pjtNm }"/></td>
@@ -69,7 +67,7 @@
                             </tbody>
                         </table>
                         <div>
-                            <input type="button" value="선택삭제" class="btn btn-outline-info" onclick="deleteValue()">
+                            <input type="button" value="선택삭제" class="btn btn-primary" onclick="pjtDeleteValue()">
                         </div>
                     </div>
                 </div>

@@ -36,6 +36,7 @@
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                             <tr>
+                                <td><b><input id="allCheck" type="checkbox" name="allCheck"/></b></td>
                                 <td><b>사번</b></td>
                                 <td><b>이름</b></td>
                                 <td><b>이메일</b></td>
@@ -50,6 +51,7 @@
                             <tbody>
                             <c:forEach var="item" items="${empList}" varStatus="vs">
                                 <tr onClick="openChild();">
+                                    <td class="checkbox"><input name="RowCheck" type="checkbox" value="${item.no}"/></td>
                                     <td onClick="setChildText(${item.empNo})"><c:out value="${item.empNo}"/></td>
                                     <td><c:out value="${item.empNm}"/></td>
                                     <td><c:out value="${item.empEmail}"/></td>
@@ -62,6 +64,9 @@
                             </c:forEach>
                             </tbody>
                         </table>
+                        <div>
+                            <input type="button" value="선택삭제" class="btn btn-primary" onclick="empDeleteValue()">
+                        </div>
                     </div>
                 </div>
             </div>
