@@ -47,6 +47,7 @@ function pjtDeleteValue(){
     }
 }
 
+
 function empDeleteValue(){
     var url = "empDelete";    // Controller로 보내고자 하는 URL
     var valueArr = [];

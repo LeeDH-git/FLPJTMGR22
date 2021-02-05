@@ -50,5 +50,8 @@ public class PjtServiceImpl implements PjtService{
     	projectDao.pjtEdit(pjtVO);
     }
 
-
+    @Override
+    public List<PjtVO> memberunion() throws Exception {
+        return projectDao.memberunion();
+    }
 }

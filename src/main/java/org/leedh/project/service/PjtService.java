@@ -21,4 +21,6 @@ public interface PjtService {
 	//프로젝트 수정
 	void pjtEdit(PjtVO pjtVO) throws Exception;
 
+	List<PjtVO>	memberunion() throws Exception;
+
 }

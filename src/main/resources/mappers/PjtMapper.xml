@@ -94,4 +94,28 @@
             NO = #{no}
     </delete>
 
+
+    <select id="memberunion"  parameterType="PjtVO" resultType="PjtVO">
+        SELECT
+
+            PJC.NO as no,
+            PJC.PJT_C as pjtC,
+            PJC.PJT_ST_C as pjtStC,
+            PJT_CLIENT as pjtClient,
+            PJT_NM as pjtNm,
+            PJT_EMP_LIST as pjtEmpList,
+            PJT_PM as pjtPm,
+            PJT_START_DATE as pjtStartDate,
+            PJT_End_DATE as pjtEndDate,
+            PJT_END_YN as pjtEndYn,
+            PJC.PJT_ST_C as pjtStC,
+            PJT_ORG_C as pjtOrgC
+
+        FROM FL_PROJECT PJT
+                JOIN FL_PJT_CODE PJC
+                ON PJT.PJT_C = PJC.PJT_C
+        where PJT.PJT_C = PJC.PJT_C
+    </select>
+
+
 </mapper>

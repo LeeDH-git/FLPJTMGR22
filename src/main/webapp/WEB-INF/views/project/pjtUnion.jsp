@@ -37,36 +37,25 @@
                             <tr>
                                 <td><b><input id="allCheck" type="checkbox" name="allCheck"/></b></td>
                                 <td><b>프로젝트 코드</b></td>
+                                <td><b>기관</b></td>
+                                <td><b>업무분류</b></td>
                                 <td><b>상태분류</b></td>
-                                <td><b>프로젝트 분류</b></td>
-                                <td><b>기관코드</b>
                                 <td><b>고객명</b></td>
                                 <td><b>프로젝트 명</b></td>
                                 <td><b>투입인원</b></td>
-                                <td><b>관리자명</b></td>                                
+                                <td><b>관리자명</b></td>
                                 <td><b>시작일</b></td>
                                 <td><b>종료일</b></td>
                                 <td><b>종료여부</b></td>
-
-                                
                             </tr>
                             </thead>
                             <tbody>
-                            <c:forEach var="pjtList" items="${pjtList}" varStatus="vs">
-<<<<<<< HEAD
-                               <tr onClick="pjtOpenChild('${pjtList.pjtC}','${pjtList.pjtClient}','${pjtList.pjtNm}','${pjtList.pjtEmpList}',
-                               		'${pjtList.pjtPm}','${pjtList.pjtStartDate}','${pjtList.pjtEndDate}','${pjtList.pjtEndYn}','${pjtList.pjtStC}','${pjtList.pjtDivC}','${pjtList.pjtOrgC}');"
-                               		onmouseover="this.style.backgroundColor='#9FB6FF'" onmouseout="this.style.backgroundColor=''"
-                               		style="cursor:pointer">
-                                    <td class="checkbox"><input name="RowCheck" type="checkbox" value="${pjtList.no}"/></td>
-=======
+                            <c:forEach var="pjtList" items="${memberunion}" varStatus="vs">
                                 <tr>
                                     <td class="checkbox" onclick="event.cancelBubble=true;"><input name="RowCheck" type="checkbox" value="${pjtList.no}"/></td>
->>>>>>> branch 'master' of https://github.com/LeeDH-git/FLPJTMGR22.git
                                     <td><c:out value="${pjtList.pjtC}"/></td>
                                     <td><c:out value="${pjtList.pjtStC}"/></td>
                                     <td><c:out value="${pjtList.pjtDivC}"/></td>
-                                    <td><c:out value="${pjtList.pjtOrgC}"/></td>
                                     <td><c:out value="${pjtList.pjtClient}"/></td>
                                     <td><c:out value="${pjtList.pjtNm }"/></td>
                                     <td><c:out value="${pjtList.pjtEmpList}"/></td>
@@ -74,7 +63,7 @@
                                     <td><c:out value="${pjtList.pjtStartDate}"/></td>
                                     <td><c:out value="${pjtList.pjtEndDate}"/></td>
                                     <td><c:out value="${pjtList.pjtEndYn}"/></td>
-
+                                    <td><c:out value="${pjtList.pjtOrgC}"/></td>
                                 </tr>
                             </c:forEach>
                             </tbody>
@@ -93,44 +82,5 @@
     </div>
 </div>
 
-  	<script>
-	    
-		var pjtOpenWin;
-		
-		function pjtOpenChild(pjtC,pjtClient,pjtNm,pjtEmpList,
-				pjtPm,pjtStartDate,pjtEndDate,pjtEndYn,pjtStC,pjtDivC,pjtOrgC)
-		{
-			// window.name = "부모창 이름"; 
-			window.name = "pjtParentForm";
-			// window.open("open할 window", "자식창 이름", "팝업창 옵션");
-			
-
-				pjtOpenWin = window.open("/project/pjtEdit",
-				"pjtChildForm", "width=570, height=350");
-			
-			// 일정시간 지연 후 값 넣기
-			setTimeout(function(){
-				pjtSetChildText(pjtC,pjtClient,pjtNm,pjtEmpList,
-						pjtPm,pjtStartDate,pjtEndDate,pjtEndYn,pjtStC,pjtDivC,pjtOrgC);
-			},350)
-		}
-		
-		function pjtSetChildText(pjtC,pjtClient,pjtNm,pjtEmpList,
-				pjtPm,pjtStartDate,pjtEndDate,pjtEndYn,pjtStC,pjtDivC,pjtOrgC){
-			  if(pjtOpenWin!=null)
-				pjtOpenWin.document.getElementById("pjtC").value = pjtC;
-			  	pjtOpenWin.document.getElementById("pjtClient").value = pjtClient;
-			  	pjtOpenWin.document.getElementById("pjtNm").value = pjtNm;
-			  	pjtOpenWin.document.getElementById("pjtEmpList").value = pjtEmpList;
-			  	pjtOpenWin.document.getElementById("pjtPm").value = pjtPm;
-			  	pjtOpenWin.document.getElementById("pjtStartDate").value = pjtStartDate;
-			  	pjtOpenWin.document.getElementById("pjtEndDate").value = pjtEndDate;
-			  	pjtOpenWin.document.getElementById("pjtEndYn").value = pjtEndYn;
-			  	pjtOpenWin.document.getElementById("pjtStC").value = pjtStC;
-			  	pjtOpenWin.document.getElementById("pjtDivC").value = pjtDivC;
-			  	pjtOpenWin.document.getElementById("pjtOrgC").value = pjtOrgC;
-			}
-	</script>
-	
 </body>
 </html>
