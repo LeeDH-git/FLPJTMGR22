@@ -56,7 +56,7 @@ public class MemberController {
                 vo.setEmpPw(pwd);
                 service.register(vo);
             }
-            // 요기에서~ 입력된 아이디가 존재한다면 -> 다시 회원가입 페이지로 돌아가기
+            // 요기에서 입력된 아이디가 존재한다면 -> 다시 회원가입 페이지로 돌아가기
             // 존재하지 않는다면 -> register
         } catch (Exception e) {
             throw new RuntimeException();
@@ -96,7 +96,6 @@ public class MemberController {
     public String logout(HttpSession session) throws Exception {
 
         session.invalidate();
-
         return "redirect:/";
     }
 
@@ -113,35 +112,6 @@ public class MemberController {
       	service.empEdit(vo);
       	model.addAttribute("empEdit",vo);
       	return "/user/empEdit";
-      	
-/*		MemberVO login = service.login(vo);
-
-		boolean pwdMatch = pwdEncoder.matches(vo.getUserPass(), login.getUserPass());
-		if(pwdMatch) {
-			service.memberUpdate(vo);
-			session.invalidate();
-		}else {
-			return "member/memberUpdateView";
-		}*/
-       /* service.memberUpdate(vo);
-        session.invalidate();
-        return "redirect:/";*/
-    }
-
-    // 회원 탈퇴 get
-    @RequestMapping(value = "/memberDeleteView", method = RequestMethod.GET)
-    public String memberDeleteView() throws Exception {
-        return "user/nouse/memberDeleteView";
-    }
-
-    // 회원 탈퇴 post
-    @RequestMapping(value = "/memberDelete", method = RequestMethod.POST)
-    public String memberDelete(EmpVO vo, HttpSession session, RedirectAttributes rttr) throws Exception {
-
-        service.memberDelete(vo);
-        session.invalidate();
-
-        return "redirect:/";
     }
 
     // 패스워드 체크
@@ -162,24 +132,9 @@ public class MemberController {
         return result;
     }
 
-    //사원 한명 정보불러오기
-
-    @RequestMapping(value = "/empInfo", method = RequestMethod.GET)
-    public void empInfo() throws Exception{
-
-        logger.info("get empInfo");
-        // 매개변수 EmpVO empVo,Model model
-        //empVo = service.selectEmp();
-        //model.addAttribute("emp",empVo);
-
-        //return "/user/empInfo";
-    }
-
-
     //사원 전체 정보 불러오기
     @RequestMapping(value = "/empShow", method = RequestMethod.GET)
     public String empShow(Model model) throws Exception{
-
 
         List<EmpVO> empVo = service.empShow();
         model.addAttribute("empList",empVo);

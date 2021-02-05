@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var='root' value="${pageContext.request.contextPath }/"/>
+<%@ include file="/resources/plugin/plugin.jsp" %>
 
 <!DOCTYPE html>
 <html>
@@ -11,7 +12,6 @@
     <meta name="description" content=""/>
     <meta name="author" content=""/>
     <title>Focusleader Project Manager</title>
-    <%@ include file="/resources/plugin/plugin.jsp" %>
 </head>
 <body class="sb-nav-fixed">
 
@@ -51,7 +51,7 @@
                             <tbody>
                             <c:forEach var="item" items="${empList}" varStatus="vs">
                                 <tr onClick="openChild();">
-                                    <td class="checkbox"><input name="RowCheck" type="checkbox" value="${item.no}"/></td>
+                                    <td class="checkbox" onclick="event.cancelBubble=true;"><input name="RowCheck" type="checkbox" value="${item.no}"/></td>
                                     <td onClick="setChildText(${item.empNo})"><c:out value="${item.empNo}"/></td>
                                     <td><c:out value="${item.empNm}"/></td>
                                     <td><c:out value="${item.empEmail}"/></td>
@@ -78,5 +78,6 @@
 
     </div>
 </div>
+
 </body>
 </html>

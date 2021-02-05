@@ -1,6 +1,6 @@
 var openWin;
 
-function openChildJS()
+function openChild()
 {
 
     // window.name = "부모창 이름";
@@ -9,7 +9,7 @@ function openChildJS()
 
     //	if(openWin == null)
     //	{
-    openWin = window.open("/user/empInfo",
+    openWin = window.open("/user/empEdit",
         "childForm", "width=570, height=950");
     //	}
 
