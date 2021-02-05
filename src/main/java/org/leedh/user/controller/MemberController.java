@@ -101,15 +101,19 @@ public class MemberController {
     }
 
     // 회원정보 수정 get
-    @RequestMapping(value = "/memberUpdateView", method = RequestMethod.GET)
+    @RequestMapping(value = "/empEdit", method = RequestMethod.GET)
     public String registerUpdateView() throws Exception {
-        return "user/nouse/memberUpdateView";
+        return "user/empEdit";
     }
 
     // 회원정보 수정  post
-    @RequestMapping(value = "/memberUpdate", method = RequestMethod.POST)
-    public String registerUpdate(EmpVO vo, HttpSession session) throws Exception {
+    @RequestMapping(value = "/empEdit", method = RequestMethod.POST)
+    public String registerUpdate(EmpVO vo,Model model) throws Exception {
 
+      	service.empEdit(vo);
+      	model.addAttribute("empEdit",vo);
+      	return "/user/empEdit";
+      	
 /*		MemberVO login = service.login(vo);
 
 		boolean pwdMatch = pwdEncoder.matches(vo.getUserPass(), login.getUserPass());
@@ -119,9 +123,9 @@ public class MemberController {
 		}else {
 			return "member/memberUpdateView";
 		}*/
-        service.memberUpdate(vo);
+       /* service.memberUpdate(vo);
         session.invalidate();
-        return "redirect:/";
+        return "redirect:/";*/
     }
 
     // 회원 탈퇴 get

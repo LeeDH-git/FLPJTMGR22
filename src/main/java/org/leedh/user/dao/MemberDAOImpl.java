@@ -32,10 +32,10 @@ public class MemberDAOImpl implements MemberDAO {
 
     //서비스에서 보낸 파라미터들을 memberUpdate(EmpVO vo)에 담습니다.
     @Override
-    public void memberUpdate(EmpVO vo) throws Exception {
+    public void empEdit(EmpVO vo) throws Exception {
         // vo에 담긴 파라미터들은 memberMapper.xml에 memberMapper라는 namespace에
-        // 아이디가 memberUpdate인 쿼리에 파라미터들을 넣어줍니다.
-        sql.update(NAMESPACE + ".memberUpdate", vo);
+        // 아이디가 empEdit인 쿼리에 파라미터들을 넣어줍니다.
+        sql.update(NAMESPACE + ".empEdit", vo);
     }
 
     // 업데이트와 마찬가지로 흐름은 같습니다.

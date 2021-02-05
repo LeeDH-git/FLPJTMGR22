@@ -74,18 +74,17 @@
     </select>
 
 
-    <!-- 유저정보 호출(조건) -->
-    <select id="selectEmp" parameterType="EmpVO" resultType="EmpVO">
-        SELECT EMP_NO        as empNo,
-               EMP_NM        as empNm,
-               EMP_EMAIL     as empEmail,
-               EMP_PHONE_NO  as empPhoneNo,
-               EMP_EMER_NO   as empEmerNo,
-               EMP_JOIN_DATE as empJoinDate,
-               PJT_POS_C     as pjtPosC,
-               PJT_LV_C      as pjtLvC
-        FROM FL_EMP
-        WHERE EMP_NO = 112233
+    <!-- 유저정보수정 -->
+    <select id="empEdit" parameterType="EmpVO" resultType="EmpVO">
+	    UPDATE FL_EMP
+	    SET 
+	    	EMP_NM = #{empNm},
+	    	EMP_PHONE_NO = #{empPhoneNo},
+	    	EMP_EMER_NO = #{empEmerNo},
+	    	PJT_LV_C = #{pjtPosC},
+	    	PJT_POS_C = #{pjtLvC}
+	    WHERE 
+	    	EMP_NO = #{empNo}
     </select>
 
     <!-- 유저정보 전체 호출 -->

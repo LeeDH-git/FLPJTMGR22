@@ -27,40 +27,41 @@
                             <div class="card-header">
                                 <h3 class="text-center font-weight-light my-4">직원정보</h3>
                             </div>
+
                             <div class="card-body">
-                                <form>
+                                <form action="${pageContext.request.contextPath}/user/empEdit" method="post">
                                     <div class=form-group">
                                         <label class="small mb-1" for="empNo">사원 번호 </label> <input
-                                            class="form-control py-4" id="empNo" name="empNo" type="text" value = "${empNo}"/>
+                                            class="form-control py-4" id="empNo" name="empNo" type="text" readonly/>
                                     </div>
                                     <!--    <div class="col-md-6"> -->
                                     <div class="form-group">
                                         <label class="small mb-1" for="empNm">이름</label> <input
-                                            class="form-control py-4" id="empNm" name="empNm" type="text" disabled/>
+                                            class="form-control py-4" id="empNm" name="empNm" type="text"/>
                                     </div>
                                     <div class="form-group">
                                         <lable class="small mb-1" for="empEmail">아이디
                                             (이메일)</lable>
                                         <input class="form-control py-4" id=empEmail name="empEmail"
-                                        " type="email" disabled aria-describedby="emailHelp"/>
+                                        " type="email"  aria-describedby="emailHelp" readonly/>
 
                                     </div>
 
                                     <div class="form-group">
                                         <label class="small mb-1" for="empPhoneNo">휴대전화 번호</label>
-                                        <input class="form-control py-4" id="empPhoneNo" name="empPhoneNo"type="text" disabled/>
+                                        <input class="form-control py-4" id="empPhoneNo" name="empPhoneNo"type="text"/>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="small mb-1" for="empEmerNo">비상연락처</label>
                                         <input class="form-control py-4"
-                                               id="empEmerNo" name = "empEmerNo" type="tel" disabled/>
+                                               id="empEmerNo" name = "empEmerNo" type="tel"/>
                                     </div>
 
                                     <div class="form-group">
 
                                         <label class="small mb-1" for="empJoinDate">입사일</label>
-                                        <input class= "form-control py" type='date' id='empJoinDate' name="empJoninDate" disabled/>
+                                        <input class= "form-control py" type='date' id='empJoinDate' name="empJoninDate" readonly/>
                                         <!-- <input class="form-control py-4" id="inputJoinDate" type="text" placeholder="입사일 입력" /> -->
 
 
@@ -71,7 +72,7 @@
                                         <label class="small mb-1" for="pjtPosC">직위</label>
 
                                         <select class= "form-control py" id ="pjtPosC" name="pjtPosC"
-                                                style="width : 130px; text-align-last: center" disabled>
+                                                style="width : 130px; text-align-last: center" >
                                             <option value="A001">사원</option> <option value = "A002">주임</option> <option value="A003">대리</option>
                                             <option value="A004">과장</option> <option value = "A005">차장</option> <option value="A006">부장</option>
                                             <option value="A007">이사</option> <option value = "A008">상무</option> <option value="A009">전무</option>
@@ -86,10 +87,14 @@
                                     <div class = "form-group">
                                         <label class="small mb-1" for="pjtLvC">기술등급</label>
                                         <select class="form-control py" id="pjtLvC" name="pjtLvC"
-                                                style="width: 130px; text-align-last: center" disabled>
+                                                style="width: 130px; text-align-last: center">
                                             <option value="A01">초급</option> <option value="A02">중하</option> <option value="A12">중</option>
                                             <option value="A22">중상</option> <option value="A03">고급</option> <option value="A04">특급</option>
                                         </select>
+                                    </div>
+                                    
+                                     <div style="text-align: center;">
+                                        <button type="submit" class="btn btn-primary" id="pjtEdit">수정</button>
                                     </div>
                                 </form>
                             </div>
@@ -123,8 +128,7 @@
 </script>
 <script>
     document.getElementById("pjtLvC").value = "${emp.pjtPosC}";
-    document.getElementById("pjtPosC").value = "${emp.pjtLvC}";
+    document.getElementById("pjtPosC").value = "${emp.pjtLvC}";-->
 </script>
--->
 </body>
 </html>

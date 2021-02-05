@@ -29,9 +29,9 @@ public class MemberServiceImpl implements MemberService {
 
 	//Controller에서 보내는 파라미터들을 memberUpdate(EmpVO vo)로 받고
 	@Override
-	public void memberUpdate(EmpVO vo) throws Exception {
+	public void empEdit(EmpVO vo) throws Exception {
 		//받은 vo를 DAO로 보내줍니다.
-		dao.memberUpdate(vo);
+		dao.empEdit(vo);
 	}
 
 	// 업데이트에서 처리한 내용과 같습니다.

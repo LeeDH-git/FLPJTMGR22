@@ -14,7 +14,7 @@ public interface MemberDAO {
     String getPw(String id) throws Exception;
     
     // 회원정보 수정
-    void memberUpdate(EmpVO vo) throws Exception;
+    void empEdit(EmpVO vo) throws Exception;
 
     // 회원 탈퇴
     void memberDelete(EmpVO vo) throws Exception;
