@@ -68,10 +68,12 @@
     </select>
 
     <select id="getPw" resultType="String">
-        select EMP_PW
-        from FL_EMP
-        where EMP_EMAIL = #{empEmail}
+        SELECT EMP_PW
+        FROM FL_EMP
+        WHERE EMP_EMAIL = #{empEmail}
     </select>
+
+
 
 
     <!-- 유저정보수정 -->

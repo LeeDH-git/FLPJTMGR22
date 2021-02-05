@@ -45,4 +45,9 @@ public class pjtDaoImpl implements PjtDao {
     public void deletePjt(String no) {
         sqlSession.delete(NAMESPACE + ".deletePjt", no);
     }
+
+    @Override
+    public List<PjtVO> memberunion() throws Exception {
+        return sqlSession.selectList(NAMESPACE + ".memberunion");
+    }
 }

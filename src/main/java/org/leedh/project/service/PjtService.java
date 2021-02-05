@@ -18,4 +18,6 @@ public interface PjtService {
 	void deletePjtCode(String no);
 	void deletePjt(String no);
 
+	List<PjtVO>	memberunion() throws Exception;
+
 }

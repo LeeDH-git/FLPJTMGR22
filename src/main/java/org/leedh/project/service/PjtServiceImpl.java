@@ -44,5 +44,8 @@ public class PjtServiceImpl implements PjtService{
         projectDao.deletePjt(no);
     }
 
-
+    @Override
+    public List<PjtVO> memberunion() throws Exception {
+        return projectDao.memberunion();
+    }
 }

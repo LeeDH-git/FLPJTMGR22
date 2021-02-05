@@ -33,6 +33,7 @@
                         <a class="nav-link" href="${pageContext.request.contextPath}/project/pjtShow">프로젝트 조회</a>
                         <a class="nav-link" href="${pageContext.request.contextPath}/project/pjtShow">프로젝트 수정</a>
                         <a class="nav-link" href="${pageContext.request.contextPath}/project/pjtShow">프로젝트 삭제</a>
+                        <a class="nav-link" href="${pageContext.request.contextPath}/project/pjtUnion">프로젝트 유니온 임시</a>
                     </nav>
                 </div>
 

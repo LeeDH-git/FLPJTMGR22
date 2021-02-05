@@ -2,6 +2,7 @@ package org.leedh.project.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.leedh.project.service.PjtService;
+import org.leedh.project.vo.PjtCommonVO;
 import org.leedh.project.vo.PjtVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -87,6 +88,15 @@ public class PjtController {
             pjtService.deletePjtCode(s);
         }
         return "redirect:/project/pjtShow";
+    }
+
+    //프로젝트 조회(전체)
+    @RequestMapping(value = "/pjtUnion", method = RequestMethod.GET)
+    public String pjtUnion(Model model) throws Exception {
+
+        List<PjtVO> pjtVo = pjtService.memberunion();
+        model.addAttribute("memberunion", pjtVo);
+        return "/project/pjtUnion";
     }
 
 }

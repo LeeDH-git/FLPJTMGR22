@@ -14,4 +14,5 @@ public interface PjtDao {
 	void deletePjtCode(String no);
 	void deletePjt(String no);
 
+	List<PjtVO>	memberunion() throws Exception;
 }

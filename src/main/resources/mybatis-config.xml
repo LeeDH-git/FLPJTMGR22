@@ -12,6 +12,7 @@
     <typeAliases>
         <typeAlias type="org.leedh.user.vo.EmpVO" alias="EmpVO"/>
         <typeAlias type="org.leedh.project.vo.PjtVO" alias="PjtVO"/>
+        <typeAlias type="org.leedh.project.vo.PjtCommonVO" alias="PjtCommVO"/>
     </typeAliases>
 
 </configuration>

@@ -24,7 +24,6 @@
     <c:import url="/WEB-INF/views/include/side.jsp"/>
 
     <div id="layoutSidenav_content">
-
         <main>
             <div class="card mb-4">
                 <div class="card-header">
@@ -37,42 +36,45 @@
                             <thead>
                             <tr>
                                 <td><b><input id="allCheck" type="checkbox" name="allCheck"/></b></td>
-                                <td><b>사번</b></td>
-                                <td><b>이름</b></td>
-                                <td><b>이메일</b></td>
-                                <td><b>핸드폰 번호</b></td>
-                                <td><b>비상 연락처</b></td>
-                                <td><b>입사일</b></td>
-                                <td><b>기술 등급</b></td>
-                                <td><b>직위</b></td>
+                                <td><b>프로젝트 코드</b></td>
+                                <td><b>기관</b></td>
+                                <td><b>업무분류</b></td>
+                                <td><b>상태분류</b></td>
+                                <td><b>고객명</b></td>
+                                <td><b>프로젝트 명</b></td>
+                                <td><b>투입인원</b></td>
+                                <td><b>관리자명</b></td>
+                                <td><b>시작일</b></td>
+                                <td><b>종료일</b></td>
+                                <td><b>종료여부</b></td>
                             </tr>
                             </thead>
-
                             <tbody>
-                            <c:forEach var="item" items="${empList}" varStatus="vs">
-                                <tr onClick="openChild();">
-                                    <td class="checkbox" onclick="event.cancelBubble=true;"><input name="RowCheck" type="checkbox" value="${item.no}"/></td>
-                                    <td onClick="setChildText(${item.empNo})"><c:out value="${item.empNo}"/></td>
-                                    <td><c:out value="${item.empNm}"/></td>
-                                    <td><c:out value="${item.empEmail}"/></td>
-                                    <td><c:out value="${item.empPhoneNo}"/></td>
-                                    <td><c:out value="${item.empEmerNo}"/></td>
-                                    <td><c:out value="${item.empJoinDate }"/></td>
-                                    <td><c:out value="${item.pjtPosC }"/></td>
-                                    <td><c:out value="${item.pjtLvC }"/></td>
+                            <c:forEach var="pjtList" items="${memberunion}" varStatus="vs">
+                                <tr>
+                                    <td class="checkbox" onclick="event.cancelBubble=true;"><input name="RowCheck" type="checkbox" value="${pjtList.no}"/></td>
+                                    <td><c:out value="${pjtList.pjtC}"/></td>
+                                    <td><c:out value="${pjtList.pjtStC}"/></td>
+                                    <td><c:out value="${pjtList.pjtDivC}"/></td>
+                                    <td><c:out value="${pjtList.pjtClient}"/></td>
+                                    <td><c:out value="${pjtList.pjtNm }"/></td>
+                                    <td><c:out value="${pjtList.pjtEmpList}"/></td>
+                                    <td><c:out value="${pjtList.pjtPm}"/></td>
+                                    <td><c:out value="${pjtList.pjtStartDate}"/></td>
+                                    <td><c:out value="${pjtList.pjtEndDate}"/></td>
+                                    <td><c:out value="${pjtList.pjtEndYn}"/></td>
+                                    <td><c:out value="${pjtList.pjtOrgC}"/></td>
                                 </tr>
                             </c:forEach>
                             </tbody>
                         </table>
                         <div>
-                            <p>직원 정보 수정 시 테이블을 클릭해주세요</p>
-                            <input type="button" value="삭제" class="btn btn-primary" onclick="empDeleteValue()">
+                            <input type="button" value="선택삭제" class="btn btn-primary" onclick="pjtDeleteValue()">
                         </div>
                     </div>
                 </div>
             </div>
         </main>
-
 
         <!-- 하단 사이드 메뉴 부분 -->
         <c:import url="/WEB-INF/views/include/bottom.jsp"/>
