@@ -14,5 +14,7 @@
 <!-- iCheck -->
 <script src="${pageContext.request.contextPath}/resources/plugin/lib/iCheck/icheck.min.js"></script>
 
-<script src="${pageContext.request.contextPath}/resources/plugin/lib/pjtDelete.js"></script>
+<%-- JS Import --%>
+<script src="${pageContext.request.contextPath}/resources/plugin/js/deleteJS.js"></script>
+<script src="${pageContext.request.contextPath}/resources/plugin/js/openChildJS.js"></script>
 

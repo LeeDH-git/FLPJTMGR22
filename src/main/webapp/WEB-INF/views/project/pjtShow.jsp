@@ -52,7 +52,7 @@
                             <tbody>
                             <c:forEach var="pjtList" items="${pjtList}" varStatus="vs">
                                 <tr>
-                                    <td class="checkbox"><input name="RowCheck" type="checkbox" value="${pjtList.no}"/></td>
+                                    <td class="checkbox" onclick="event.cancelBubble=true;"><input name="RowCheck" type="checkbox" value="${pjtList.no}"/></td>
                                     <td><c:out value="${pjtList.pjtC}"/></td>
                                     <td><c:out value="${pjtList.pjtStC}"/></td>
                                     <td><c:out value="${pjtList.pjtClient}"/></td>

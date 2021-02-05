@@ -188,22 +188,24 @@ public class MemberController {
     }
 
     // 사원 정보 삭제
-    @RequestMapping(value = "/empdelete", method = RequestMethod.GET)
+    @RequestMapping(value = "/empDelete", method = RequestMethod.GET)
     public String delete(String no) throws Exception {
-        service.deleteEmp(no);
+
         service.deleteEmpAdmin(no);
+        service.deleteEmp(no);
         return "redirect:/user/empShow";
     }
 
     // 사원 정보 선택삭제
-    @RequestMapping(value = "/empdelete")
+    @RequestMapping(value = "/empDelete")
     public String checkDelete(HttpServletRequest request) throws Exception {
 
         String[] ajaxMsg = request.getParameterValues("valueArr");
 
         for (String s : ajaxMsg) {
-            service.deleteEmp(s);
+
             service.deleteEmpAdmin(s);
+            service.deleteEmp(s);
         }
         return "redirect:/user/empShow";
     }
