@@ -13,5 +13,7 @@ public interface PjtDao {
 	//프로젝트 삭제
 	void deletePjtCode(String no);
 	void deletePjt(String no);
-
+	
+	//프로젝트 수정
+	void pjtEdit(PjtVO pjtVO) throws Exception;
 }

@@ -53,6 +53,24 @@ public class PjtController {
         model.addAttribute("pjtList", pjtVo);
         return "/project/pjtShow";
     }
+    
+    //프로젝트 수정
+    @RequestMapping(value = "/pjtEdit", method = RequestMethod.GET)
+    public String pjtEditGET() throws Exception{
+    	
+    	//List<PjtVO> pjtVo = pjtService.pjtShow();
+    	//model.addAttribute("pjtList",pjtVo);
+    	return "/project/pjtEdit";
+    }
+    
+    @RequestMapping(value = "/pjtEdit", method = RequestMethod.POST)
+    public String pjtEdit(PjtVO pjtVO,Model model) throws Exception{
+    	
+    	pjtService.pjtEdit(pjtVO);
+    	model.addAttribute("pjtEdit",pjtVO);
+    	return "/project/pjtEdit";
+    }
+    
     /*// 프로젝트 관리 페이지
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(@ModelAttribute("loginDTO") LoginDTO loginDTO) throws Exception {

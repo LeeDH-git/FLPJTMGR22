@@ -43,6 +43,12 @@ public class PjtServiceImpl implements PjtService{
     public void deletePjt(String no) {
         projectDao.deletePjt(no);
     }
+    
+    //프로젝트 수정
+    @Override
+    public void pjtEdit(PjtVO pjtVO) throws Exception{
+    	projectDao.pjtEdit(pjtVO);
+    }
 
 
 }

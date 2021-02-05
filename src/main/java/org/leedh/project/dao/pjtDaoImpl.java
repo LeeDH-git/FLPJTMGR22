@@ -45,4 +45,10 @@ public class pjtDaoImpl implements PjtDao {
     public void deletePjt(String no) {
         sqlSession.delete(NAMESPACE + ".deletePjt", no);
     }
+    
+    //프로젝트 수정
+    @Override
+    public void pjtEdit(PjtVO pjtVO) throws Exception{
+    	sqlSession.update(NAMESPACE + ".pjtEdit",pjtVO);
+    }
 }

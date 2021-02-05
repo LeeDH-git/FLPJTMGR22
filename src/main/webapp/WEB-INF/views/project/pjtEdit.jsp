@@ -45,13 +45,35 @@
                                             />
                                     </div>
                                     
+                                    <div class="form-group">
+                                        <label class="small mb-1" for="pjtDivC">프로젝트 업무분류</label>
+                                        <select class="form-control py" id="pjtDivC" name="pjtDivC"
+                                                style="width:130px;text-align-last:center">
+                                            <option value="none">=== 선택 ===</option>
+                                            <option value="A01">ECM</option>
+                                            <option value="A02">OCR</option>
+                                        </select>
+                                    </div> 
+                                    
+                                     <div class="form-group">
+                                        <label class="small mb-1" for="pjtOrgC">기관명</label>
+                                        <select class="form-control py" id="pjtOrgC" name="pjtOrgC"
+                                                style="width:130px;text-align-last:center">
+                                            <option value="none">=== 선택 ===</option>
+                                            <option value="001">한국은행</option>
+                                            <option value="002">산업은행</option>
+                                            <option value="003">기업은행</option>
+                                            <option value="004">KB국민은행</option>
+                                            <option value="005">수협은행</option>
+                                        </select>
+                                    </div>
                                     
                                      <div class=form-group">
                                         <label class="small mb-1" for="pjtNm">프로젝트 명</label> <input
                                             class="form-control py-4" id="pjtNm" name="pjtNm" type="text"
                                             />
                                     </div>
-                                    
+
                                     <div class="form-group">
                                         <label class="small mb-1" for="pjtEmpList">프로젝트 투입인원</label>
                                         <input class="form-control py-4" id="pjtEmpList" name="pjtEmpList" type="text"
@@ -127,15 +149,7 @@
                                            placeholder="기관 종류 입력" />
                                        </div> -->
 
-                                 <!--     <div class="form-group">
-                                        <label class="small mb-1" for="pjtDivC">프로젝트 업무분류</label>
-                                        <select class="form-control py" id="pjtDivC" name="pjtDivC"
-                                                style="width:130px;text-align-last:center">
-                                            <option value="none">=== 선택 ===</option>
-                                            <option value="A01">ECM</option>
-                                            <option value="A02">OCR</option>
-                                        </select>
-                                    </div> -->
+   
 
 
 

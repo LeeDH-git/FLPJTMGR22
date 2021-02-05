@@ -23,21 +23,62 @@
     <!-- 프로젝트 전체 호출 -->
     <select id="pjtShow" parameterType="PjtVO" resultType="PjtVO">
 
-        SELECT
-            NO as no,
-            PJT_C as pjtC,
+		SELECT
+            PJC.NO as no,
+            PJC.PJT_C as pjtC,
+            PJC.PJT_ST_C as pjtStC,
+            PJC.PJT_DIV_C as pjtDivC,
+            PJT_ORG_C as pjtOrgC,
             PJT_CLIENT as pjtClient,
             PJT_NM as pjtNm,
             PJT_EMP_LIST as pjtEmpList,
             PJT_PM as pjtPm,
             PJT_START_DATE as pjtStartDate,
             PJT_End_DATE as pjtEndDate,
-            PJT_END_YN as pjtEndYn,
-            PJT_ST_C as pjtStC
-        FROM FL_PROJECT
-
+            PJT_END_YN as pjtEndYn    
+        FROM FL_PROJECT PJT
+                JOIN FL_PJT_CODE PJC
+                ON PJT.PJT_C = PJC.PJT_C
+        where PJT.PJT_C = PJC.PJT_C
     </select>
+	
+	<!--  프로젝트 수정 -->
+		<select id="pjtEdit" parameterType="PjtVO" resultType="PjtVO">
+		
 
+<!--  		UPDATE FL_PJT_CODE PJC
+			RIGHT JOIN FL_PROJECT PJT ON(PJT.#{pjtC} = PJC.#{pjtC})
+			SET PJT.PJT_CLIENT =#{pjtClient},
+			PJT.PJT_NM = #{pjtNm},
+			PJT.PJT_EMP_LIST = #{pjtEmpList},
+			PJT.PJT_PM = #{pjtPm},
+			PJT.PJT_START_DATE = #{pjtStartDate},
+			PJT.PJT_END_DATE =#{pjtEndDate},
+			PJT.PJT_END_YN = #{pjtEndYn},
+			PJT.PJT_ST_C = #{pjtStC},
+			PJC.PJT_ST_C = #{pjtStC},
+			PJC.PJT_DIV.C = #{pjtDivC},
+			PJC.PJT_ORG_C = #{pjtOrgC}
+		WHERE FL_PJT_CODE.PJT_C = #{pjtC} -->
+		
+		
+	<!-- UPDATE FL_PROJECT as PJT,
+			   FL_PJT_CODE as PJC
+		SET PJT.PJT_CLIENT =#{pjtClient},
+			PJT.PJT_NM = #{pjtNm},
+			PJT.PJT_EMP_LIST = #{pjtEmpList},
+			PJT.PJT_PM = #{pjtPm},
+			PJT.PJT_START_DATE = #{pjtStartDate},
+			PJT.PJT_END_DATE =#{pjtEndDate},
+			PJT.PJT_END_YN = #{pjtEndYn},
+			PJT.PJT_ST_C = #{pjtStC},
+			PJC.PJT_ST_C = #{pjtStC},
+			PJC.PJT_DIV.C = #{pjtDivC},
+			PJC.PJT_ORG_C = #{pjtOrgC}
+		WHERE PJC.PJT_C = #{pjtC}-->
+		
+	</select>
+	
     <!--  프로젝트 삭제  -->
     <delete id="deletePjtCode" >
         DELETE
