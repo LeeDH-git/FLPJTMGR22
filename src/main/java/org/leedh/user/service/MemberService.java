@@ -23,4 +23,8 @@ public interface MemberService {
     EmpVO selectEmp() throws Exception;
     //직원 정보(전체) 조회
     List<EmpVO> empShow() throws Exception;
+
+    //직원 정보 삭제
+    void deleteEmp(String no);
+    void deleteEmpAdmin(String no);
 }

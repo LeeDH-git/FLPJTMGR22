@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.ui.Model;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @Controller
@@ -181,4 +182,26 @@ public class MemberController {
 
         return "/user/empShow";
     }
+
+    // 사원 정보 삭제
+    @RequestMapping(value = "/empdelete", method = RequestMethod.GET)
+    public String delete(String no) throws Exception {
+        service.deleteEmp(no);
+        service.deleteEmpAdmin(no);
+        return "redirect:/user/empShow";
+    }
+
+    // 사원 정보 선택삭제
+    @RequestMapping(value = "/empdelete")
+    public String checkDelete(HttpServletRequest request) throws Exception {
+
+        String[] ajaxMsg = request.getParameterValues("valueArr");
+
+        for (String s : ajaxMsg) {
+            service.deleteEmp(s);
+            service.deleteEmpAdmin(s);
+        }
+        return "redirect:/user/empShow";
+    }
+
 }

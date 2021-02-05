@@ -76,7 +76,7 @@ public class PjtController {
 
 
     // 프로젝트 삭제
-    @RequestMapping(value = "/pjtdelete", method = RequestMethod.GET)
+    @RequestMapping(value = "/pjtDelete", method = RequestMethod.GET)
     public String delete(String no) throws Exception {
         pjtService.deletePjt(no);
         pjtService.deletePjtCode(no);
@@ -84,7 +84,7 @@ public class PjtController {
     }
 
     // 프로젝트 선택삭제
-    @RequestMapping(value = "/pjtdelete")
+    @RequestMapping(value = "/pjtDelete")
     public String checkDelete(HttpServletRequest request) throws Exception {
 
         String[] ajaxMsg = request.getParameterValues("valueArr");

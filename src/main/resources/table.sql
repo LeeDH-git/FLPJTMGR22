@@ -30,7 +30,7 @@ CREATE TABLE FL_CODE
             PRIMARY KEY,
     PJT_DESC_C VARCHAR2(50) NOT NULL,
     PJT_YN_C   VARCHAR2(1)  NOT NULL
-)
+);
 
 
 CREATE TABLE FL_EMP_CODE
@@ -39,7 +39,7 @@ CREATE TABLE FL_EMP_CODE
     PJT_POS_C VARCHAR2(4) NOT NULL,
     CONSTRAINT PK_FL_EMP_CODE
         PRIMARY KEY (PJT_LV_C, PJT_POS_C)
-)
+);
 
 
 CREATE TABLE FL_PJT_CODE
@@ -51,18 +51,18 @@ CREATE TABLE FL_PJT_CODE
     PJT_DIV_C VARCHAR2(50),
     PJT_ST_C  VARCHAR2(50),
     PJT_ORG_C VARCHAR2(50)
-)
+);
 
 
 CREATE UNIQUE INDEX FL_PJT_CODE_NO_UINDEX
-    ON FL_PJT_CODE (NO)
+    ON FL_PJT_CODE (NO);
 
 
 CREATE UNIQUE INDEX FL_PJT_CODE_PJT_ST_C_UINDEX
-    ON FL_PJT_CODE (PJT_ST_C)
+    ON FL_PJT_CODE (PJT_ST_C);
 
 
-----------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------------*/
 
 -- 직원 테이블
 CREATE TABLE FL_EMP
@@ -104,7 +104,7 @@ CREATE TABLE FL_EMP_ADMIN
 CREATE UNIQUE INDEX FL_EMP_ADMIN_NO_UINDEX
     ON FL_EMP_ADMIN (NO);
 
-----------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------------*/
 -- 프로젝트 테이블
 
 CREATE TABLE FL_PROJECT
@@ -170,6 +170,39 @@ CREATE SEQUENCE SEQ_FLPJT_NO --시퀀스이름
     MINVALUE 1 -- 최소값 1
     MAXVALUE 1000 -- 최대값 10000
     NOCYCLE; -- 순환 하지않음
+
+
+-- 프로시저
+
+create PROCEDURE P_LOGIN_DATE
+(
+    v_login_date IN varchar2,
+    v_emp_email1 IN varchar2
+)
+    IS
+
+    v_emp_email2 FL_EMP.EMP_EMAIL%TYPE;
+    v_emp_pw  FL_EMP.EMP_PW%TYPE;
+
+BEGIN
+
+    SELECT EMP_EMAIL, EMP_PW
+    INTO v_emp_email2,v_emp_pw
+    FROM FL_EMP
+    WHERE EMP_EMAIL = v_emp_email1;
+
+    DBMS_OUTPUT.PUT_LINE('이메일 : '||v_emp_email2);
+    DBMS_OUTPUT.PUT_LINE('PW : '||v_emp_pw);
+
+    UPDATE FL_EMP_ADMIN
+    SET LOGIN_DATE = v_login_date
+    WHERE EMP_EMAIL = v_emp_email1;
+
+    COMMIT;
+
+END P_LOGIN_DATE;
+/
+
 
 
 

@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 
 @Data
 public class EmpAdminVO {
+    private int no;
     private int empNo;
     private LocalDateTime loginDate;
     private LocalDateTime joinDate;

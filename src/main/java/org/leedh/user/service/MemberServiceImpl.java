@@ -66,4 +66,14 @@ public class MemberServiceImpl implements MemberService {
     public List<EmpVO> empShow() throws Exception{
     	return dao.empShow();
     }
+
+	@Override
+	public void deleteEmp(String no) {
+		dao.deleteEmp(no);
+	}
+
+	@Override
+	public void deleteEmpAdmin(String no) {
+		dao.deleteEmpAdmin(no);
+	}
 }

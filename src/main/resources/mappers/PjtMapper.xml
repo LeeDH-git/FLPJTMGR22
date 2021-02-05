@@ -38,7 +38,7 @@
 
     </select>
 
-    <!--  회원 삭제  -->
+    <!--  프로젝트 삭제  -->
     <delete id="deletePjtCode" >
         DELETE
             FL_PJT_CODE

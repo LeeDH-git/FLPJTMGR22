@@ -6,8 +6,9 @@
     <!-- 회원가입 -->
     <insert id="register">
         INSERT
-        ALL INTO FL_EMP
-        VALUES (#{empNo},
+            ALL INTO FL_EMP
+        VALUES (SEQ_EMP_NO.NEXTVAL,
+                #{empNo},
                 #{empNm},
                 #{empPw},
                 #{empEmail},
@@ -15,41 +16,49 @@
                 #{empEmerNo},
                 #{empJoinDate},
                 #{pjtPosC},
-                #{pjtLvC} )
-        INTO FL_EMP_ADMIN (EMP_NO,EMP_EMAIL,JOIN_DATE,EMP_AUTH)
-        VALUES (#{empNo},#{empEmail},to_char ( sysdate,'yyyy.mm.dd hh24:mi' ),'EMP')
-        SELECT * FROM dual
+                #{pjtLvC})
+        INTO FL_EMP_ADMIN (NO, EMP_NO, EMP_EMAIL, JOIN_DATE, EMP_AUTH)
+        VALUES (SEQ_EMP_ADMIN_NO.NEXTVAL, #{empNo}, #{empEmail}, to_char(sysdate, 'yyyy.mm.dd hh24:mi'), 'EMP')
+        SELECT *
+        FROM dual
     </insert>
 
     <!-- 로그인 -->
-    <select id="login" resultType="EmpVO">
-        SELECT EMP_EMAIL,EMP_PW
-        FROM FL_EMP
-        WHERE EMP_EMAIL = #{empEmail}
+    <select id="login" statementType="CALLABLE" parameterType="EmpVO" resultType="EmpVO">
+        {
+            CALL P_LOGIN_DATE(to_char(sysdate,'yyyy.mm.dd hh24:mi'),#{empEmail})
+        }
     </select>
 
-<!--    &lt;!&ndash; 회원정보 수정 &ndash;&gt;-->
-<!--    <update id="memberUpdate">-->
-<!--        UPDATE MP_MEMBER SET-->
-<!--        &lt;!&ndash; USERPASS = #{userPass}, &ndash;&gt;-->
-<!--        USERNAME = #{userName}-->
-<!--        WHERE USERID = #{userId}-->
-<!--    </update>-->
 
-<!--    &lt;!&ndash; 회원탈퇴 &ndash;&gt;-->
-<!--    <delete id="memberDelete">-->
-<!--        DELETE FROM MP_MEMBER-->
-<!--        WHERE USERID = #{userId}-->
-<!--        &lt;!&ndash;  AND USERPASS = #{userPass} &ndash;&gt;-->
-<!--    </delete>-->
-
-<!--    &lt;!&ndash; 패스워드 체크 &ndash;&gt;-->
-<!--    <select id="passChk" resultType="int">-->
-<!--        SELECT COUNT(*)-->
-<!--        FROM MP_MEMBER-->
-<!--        WHERE USERID = #{userId}-->
-<!--          AND USERPASS = #{userPass}-->
+    <!--    <select id="login" resultType="EmpVO">-->
+<!--        SELECT EMP_EMAIL, EMP_PW-->
+<!--        FROM FL_EMP-->
+<!--        WHERE EMP_EMAIL = #{empEmail}-->
 <!--    </select>-->
+
+    <!--    &lt;!&ndash; 회원정보 수정 &ndash;&gt;-->
+    <!--    <update id="memberUpdate">-->
+    <!--        UPDATE MP_MEMBER SET-->
+    <!--        &lt;!&ndash; USERPASS = #{userPass}, &ndash;&gt;-->
+    <!--        USERNAME = #{userName}-->
+    <!--        WHERE USERID = #{userId}-->
+    <!--    </update>-->
+
+    <!--    &lt;!&ndash; 회원탈퇴 &ndash;&gt;-->
+    <!--    <delete id="memberDelete">-->
+    <!--        DELETE FROM MP_MEMBER-->
+    <!--        WHERE USERID = #{userId}-->
+    <!--        &lt;!&ndash;  AND USERPASS = #{userPass} &ndash;&gt;-->
+    <!--    </delete>-->
+
+    <!--    &lt;!&ndash; 패스워드 체크 &ndash;&gt;-->
+    <!--    <select id="passChk" resultType="int">-->
+    <!--        SELECT COUNT(*)-->
+    <!--        FROM MP_MEMBER-->
+    <!--        WHERE USERID = #{userId}-->
+    <!--          AND USERPASS = #{userPass}-->
+    <!--    </select>-->
 
     <!-- 아이디 중복 체크 -->
     <select id="idChk" resultType="int">
@@ -65,34 +74,50 @@
     </select>
 
 
-	<!-- 유저정보 호출(조건) -->
-  	<select id="selectEmp" parameterType="EmpVO" resultType="EmpVO">
-		SELECT
-		EMP_NO as empNo, 
-		EMP_NM as empNm,
-		EMP_EMAIL as empEmail, 
-		EMP_PHONE_NO as empPhoneNo,
-		EMP_EMER_NO as empEmerNo,
-		EMP_JOIN_DATE as empJoinDate,
-		PJT_POS_C as pjtPosC,
-		PJT_LV_C as pjtLvC
-		FROM FL_EMP
-		WHERE EMP_NO=112233
-	</select>
-	
-	<!-- 유저정보 전체 호출 -->
-    	<select id="empShow" parameterType="EmpVO" resultType="EmpVO">
-		SELECT 
-		EMP_NO as empNo, 
-		EMP_NM as empNm,
-		EMP_EMAIL as empEmail, 
-		EMP_PHONE_NO as empPhoneNo,
-		EMP_EMER_NO as empEmerNo,
-		EMP_JOIN_DATE as empJoinDate,
-		PJT_POS_C as pjtPosC,
-		PJT_LV_C as pjtLvC
-		FROM FL_EMP
-	</select>
+    <!-- 유저정보 호출(조건) -->
+    <select id="selectEmp" parameterType="EmpVO" resultType="EmpVO">
+        SELECT EMP_NO        as empNo,
+               EMP_NM        as empNm,
+               EMP_EMAIL     as empEmail,
+               EMP_PHONE_NO  as empPhoneNo,
+               EMP_EMER_NO   as empEmerNo,
+               EMP_JOIN_DATE as empJoinDate,
+               PJT_POS_C     as pjtPosC,
+               PJT_LV_C      as pjtLvC
+        FROM FL_EMP
+        WHERE EMP_NO = 112233
+    </select>
+
+    <!-- 유저정보 전체 호출 -->
+    <select id="empShow" parameterType="EmpVO" resultType="EmpVO">
+        SELECT NO            as no,
+               EMP_NO        as empNo,
+               EMP_NM        as empNm,
+               EMP_EMAIL     as empEmail,
+               EMP_PHONE_NO  as empPhoneNo,
+               EMP_EMER_NO   as empEmerNo,
+               EMP_JOIN_DATE as empJoinDate,
+               PJT_POS_C     as pjtPosC,
+               PJT_LV_C      as pjtLvC
+        FROM FL_EMP
+    </select>
+
+    <!--  직원정보 삭제  -->
+    <delete id="deleteEmp" >
+        DELETE
+            FL_EMP
+        WHERE
+            NO = #{no}
+    </delete>
+
+    <delete id="deleteEmpAdmin">
+        DELETE
+            FL_EMP_ADMIN
+        WHERE
+            NO = #{no}
+    </delete>
+
+
 </mapper>
 
 

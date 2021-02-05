@@ -19,7 +19,7 @@ $(function(){
 });
 
 function pjtDeleteValue(){
-    var url = "pjtdelete";    // Controller로 보내고자 하는 URL
+    var url = "pjtDelete";    // Controller로 보내고자 하는 URL
     var valueArr = [];
     var list = $("input[name='RowCheck']");
     for(var i = 0; i < list.length; i++){
@@ -48,7 +48,7 @@ function pjtDeleteValue(){
 }
 
 function empDeleteValue(){
-    var url = "empdelete";    // Controller로 보내고자 하는 URL
+    var url = "empDelete";    // Controller로 보내고자 하는 URL
     var valueArr = [];
     var list = $("input[name='RowCheck']");
     for(var i = 0; i < list.length; i++){
