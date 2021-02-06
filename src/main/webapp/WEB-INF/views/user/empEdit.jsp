@@ -21,7 +21,7 @@
                     <div class="col-lg-7">
                         <div class="card shadow-lg border-0 rounded-lg mt-5">
                             <div class="card-header">
-                                <h3 class="text-center font-weight-light my-4">직원정보</h3>
+                                <h3 class="text-center font-weight-light my-2">직원정보</h3>
                             </div>
 
                             <div class="card-body">
@@ -93,7 +93,8 @@
                                         </select>
                                     </div>
                                     <div style="text-align: center;">
-                                        <button type="submit" class="btn btn-primary" id="pjtEdit">수정</button>
+                                        <button type="submit" class="btn btn-primary" onclick="window.close()">수정
+                                        </button>
                                     </div>
                                 </form>
                             </div>

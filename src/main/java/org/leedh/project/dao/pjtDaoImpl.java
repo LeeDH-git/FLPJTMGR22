@@ -45,17 +45,18 @@ public class pjtDaoImpl implements PjtDao {
     public void deletePjt(String no) {
         sqlSession.delete(NAMESPACE + ".deletePjt", no);
     }
-<<<<<<< HEAD
-    
+
+
     //프로젝트 수정
     @Override
-    public void pjtEdit(PjtVO pjtVO) throws Exception{
-    	sqlSession.update(NAMESPACE + ".pjtEdit",pjtVO);
-=======
+    public void pjtEdit(PjtVO pjtVO) throws Exception {
+        sqlSession.update(NAMESPACE + ".pjtEdit", pjtVO);
+    }
 
     @Override
-    public List<PjtVO> memberunion() throws Exception {
-        return sqlSession.selectList(NAMESPACE + ".memberunion");
->>>>>>> branch 'master' of https://github.com/LeeDH-git/FLPJTMGR22.git
+    public List<PjtVO> memberUnion() throws Exception {
+        return sqlSession.selectList(NAMESPACE + ".memberUnion");
     }
+
 }
+

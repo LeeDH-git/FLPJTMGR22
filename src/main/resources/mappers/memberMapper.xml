@@ -76,18 +76,20 @@
 
 
 
-    <!-- 유저정보수정 -->
-    <select id="empEdit" parameterType="EmpVO" resultType="EmpVO">
-	    UPDATE FL_EMP
-	    SET 
-	    	EMP_NM = #{empNm},
-	    	EMP_PHONE_NO = #{empPhoneNo},
-	    	EMP_EMER_NO = #{empEmerNo},
-	    	PJT_LV_C = #{pjtPosC},
-	    	PJT_POS_C = #{pjtLvC}
-	    WHERE 
-	    	EMP_NO = #{empNo}
-    </select>
+    <!--  프로젝트 수정 -->
+    <update id="empEdit">
+        MERGE INTO FL_EMP FEMP
+        USING FL_EMP_ADMIN FEADM
+        ON (FEMP.EMP_NO = FEADM.EMP_NO)
+        WHEN MATCHED THEN
+            UPDATE
+            SET FEMP.EMP_NM       = #{empNm},
+                FEMP.EMP_PHONE_NO = #{empPhoneNo},
+                FEMP.EMP_EMER_NO  = #{empEmerNo},
+                FEMP.PJT_POS_C = #{pjtPosC},
+                FEMP.PJT_LV_C  = #{pjtLvC}
+            WHERE FEMP.EMP_NO = FEADM.EMP_NO
+    </update>
 
     <!-- 유저정보 전체 호출 -->
     <select id="empShow" parameterType="EmpVO" resultType="EmpVO">

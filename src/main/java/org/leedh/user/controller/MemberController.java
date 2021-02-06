@@ -1,5 +1,6 @@
 package org.leedh.user.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.leedh.user.dao.MemberDAO;
 import org.leedh.user.service.MemberService;
 import org.leedh.user.vo.EmpVO;
@@ -8,21 +9,29 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import org.springframework.ui.Model;
-import java.util.List;
 
+import java.text.DateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/user")
+@Slf4j
 public class MemberController {
-    private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 
     private final MemberService service;
     private final MemberDAO dao;
@@ -35,18 +44,34 @@ public class MemberController {
         this.dao = dao;
     }
 
-
     // 회원가입 get
     @RequestMapping(value = "/register", method = RequestMethod.GET)
-    public void getRegister() throws Exception {
-        logger.info("get register");
+    public String getRegister(HttpServletRequest request, HttpSession session) throws Exception {
+
+        // url 직접 접근시 로그인 화면으로 리다이렉션 /  session.invalidate()로 세션 소거
+        if (request.getHeader("REFERER") == null) {
+            session.invalidate();
+            return "redirect:/";
+        }
+
+        log.info("get register");
+        return "/user/register";
+
     }
 
     // 회원가입 post
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String postRegister(EmpVO vo) throws Exception {
-        logger.info("post register");
+    public String postRegister(EmpVO vo, HttpSession session, HttpServletRequest request) throws Exception {
+
+        // url 직접 접근시 로그인 화면으로 리다이렉션 /  session.invalidate()로 세션 소거
+        if (request.getHeader("REFERER") == null) {
+            session.invalidate();
+            return "redirect:/";
+        }
+
+        log.info("post register");
         int result = service.idChk(vo);
+
         try {
             if (result == 1) {
                 return "redirect:/user/register";
@@ -56,13 +81,15 @@ public class MemberController {
                 vo.setEmpPw(pwd);
                 service.register(vo);
             }
-            // 요기에서 입력된 아이디가 존재한다면 -> 다시 회원가입 페이지로 돌아가기
+            // 입력된 아이디가 존재한다면 -> 다시 회원가입 페이지로 돌아가기
             // 존재하지 않는다면 -> register
         } catch (Exception e) {
-            throw new RuntimeException();
+            log.debug(e.getMessage());
         }
-        return "redirect:/main";
+
+        return "/project/main";
     }
+
 
     // 로그인 post
     @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -72,52 +99,71 @@ public class MemberController {
 
         String id = vo.getEmpEmail();
         String pw = dao.getPw(id);
-        logger.info("암호화 비밀번호 :" + pw);
+        log.info("암호화 비밀번호 :" + pw);
 
         String rawPw = vo.getEmpPw();
-        logger.info("입력된 비밀번호: " + rawPw);
+        log.info("입력된 비밀번호: " + rawPw);
 
         if (pwdEncoder.matches(rawPw, pw)) {
-            logger.info("비밀번호 일치");
+            log.info("비밀번호 일치");
             service.login(vo);
-            String message = vo.getEmpNm();
-            session.setAttribute("user", message);
+            session.setAttribute("email", id);
+            session.setAttribute("name",vo.getEmpNm());
         } else {
-            logger.info("비밀번호 불일치");
+            log.info("비밀번호 불일치");
             return "redirect:/";
         }
 
-        return "redirect:/main";
+        return "/project/main";
 
     }
 
     // 로그아웃 post
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logout(HttpSession session) throws Exception {
-
         session.invalidate();
         return "redirect:/";
     }
 
     // 회원정보 수정 get
     @RequestMapping(value = "/empEdit", method = RequestMethod.GET)
-    public String registerUpdateView() throws Exception {
+    public String registerUpdateView(HttpServletRequest request, HttpSession session) throws Exception {
+
+        // url 직접 접근시 로그인 화면으로 리다이렉션 /  session.invalidate()로 세션 소거
+        if (request.getHeader("REFERER") == null) {
+            session.invalidate();
+            return "redirect:/";
+        }
+
         return "user/empEdit";
     }
 
     // 회원정보 수정  post
     @RequestMapping(value = "/empEdit", method = RequestMethod.POST)
-    public String registerUpdate(EmpVO vo,Model model) throws Exception {
+    public String registerUpdate(EmpVO vo, Model model, HttpServletRequest request, HttpSession session) throws
+            Exception {
 
-      	service.empEdit(vo);
-      	model.addAttribute("empEdit",vo);
-      	return "/user/empEdit";
+        // url 직접 접근시 로그인 화면으로 리다이렉션 /  session.invalidate()로 세션 소거
+        if (request.getHeader("REFERER") == null) {
+            session.invalidate();
+            return "redirect:/";
+        }
+
+        service.empEdit(vo);
+        model.addAttribute("empEdit", vo);
+        return "/user/empEdit";
     }
 
     // 패스워드 체크
     @ResponseBody
     @RequestMapping(value = "/passChk", method = RequestMethod.POST)
-    public boolean passChk(EmpVO vo) throws Exception {
+    public boolean passChk(EmpVO vo, HttpSession session, HttpServletRequest request) throws Exception {
+
+        // url 직접 접근시 로그인 화면으로 리다이렉션 /  session.invalidate()로 세션 소거
+        if (request.getHeader("REFERER") == null) {
+            session.invalidate();
+
+        }
 
         EmpVO login = service.login(vo);
         boolean pwdChk = pwdEncoder.matches(vo.getEmpPw(), login.getEmpPw());
@@ -134,10 +180,10 @@ public class MemberController {
 
     //사원 전체 정보 불러오기
     @RequestMapping(value = "/empShow", method = RequestMethod.GET)
-    public String empShow(Model model) throws Exception{
+    public String empShow(Model model) throws Exception {
 
         List<EmpVO> empVo = service.empShow();
-        model.addAttribute("empList",empVo);
+        model.addAttribute("empList", empVo);
 
         return "/user/empShow";
     }

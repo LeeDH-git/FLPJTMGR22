@@ -18,7 +18,7 @@ public class EmpVO {
 */
 
     private int no;
-    private int empNo;
+    private String empNo;
     private String empNm;
     private String empPw;
     private String empEmail;
@@ -27,6 +27,7 @@ public class EmpVO {
     private String empJoinDate;
     private String pjtLvC;
     private String pjtPosC;
+    private boolean rememberEmail;
 
 
 }

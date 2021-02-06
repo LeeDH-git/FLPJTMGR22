@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 
 <html>
@@ -24,29 +25,33 @@
                             <div class="card-header"><h3 class="text-center font-weight-light my-4">FocusLeader Project
                                 Manager</h3></div>
                             <div class="card-body">
-                                <form name="homeForm" action="${pageContext.request.contextPath}/user/login" method="post">
+                                <form name="homeForm" action="${pageContext.request.contextPath}/user/login"
+                                      method="post">
 
                                     <div class="form-group">
                                         <label class="small mb-1" for="empEmail">이메일</label>
-                                        <input class="form-control py-4" id="empEmail" name="empEmail" type="email"
-                                               placeholder="이메일을 입력하세요."/>
+                                        <input class="form-control py-4" id="empEmail" name="empEmail" type="email" placeholder="이메일을 입력하세요."/>
                                     </div>
                                     <div class="form-group">
                                         <label class="small mb-1" for="empPw">비밀번호</label>
                                         <input class="form-control py-4" id="empPw" name="empPw" type="password"
                                                placeholder="비밀번호를 입력하세요."/>
                                     </div>
+                                    <div class="form-group">
+                    					<span class="font-weight-bold text-white bg-dark"
+                                          id="LoginCheck"></span>
+                                    </div>
                                     <div class="row">
                                         <div class="col-8">
                                             <div class="checkbox icheck">
-                                                <label>
-                                                    <input type="checkbox" name="cookie"> 로그인유지
-                                                </label>
+<%--                                                <label>--%>
+<%--                                                    <input type="checkbox" name="remember_us" value="${checked}"> 로그인유지--%>
+<%--                                                </label>--%>
                                             </div>
                                         </div>
                                         <!-- /.col -->
                                         <div class="col-8">
-                                            <button type="submit" class="btn btn-primary">로그인</button>
+                                            <button id="loginBtn" type="submit" class="btn btn-primary">로그인</button>
                                         </div>
                                         <!-- /.col -->
                                     </div>
@@ -81,5 +86,6 @@
         </footer>
     </div>
 </div>
+
 </body>
 </html>

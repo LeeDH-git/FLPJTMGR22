@@ -12,7 +12,7 @@
     <%@ include file="/resources/plugin/plugin.jsp" %>
     <title>Focusleader Project Manager 회원가입</title>
 </head>
-<script type="text/javascript">
+<%--<script type="text/javascript">
     $(document).ready(function () {
 
         $("#submit").on("click", function () {
@@ -58,7 +58,7 @@
             }
         })
     }
-</script>
+</script>--%>
 <body class="bg-primary">
 <div id="layoutAuthentication_content">
     <main>
