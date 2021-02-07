@@ -1,7 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/plugin/js/backspace.js"></script>
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<%@ include file="/resources/plugin/plugin.jsp" %>
 
 <html>
 <head>
@@ -11,7 +12,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <meta name="description" content=""/>
     <meta name="author" content=""/>
-    <%@ include file="/resources/plugin/plugin.jsp" %>
 
 </head>
 <body class="bg-primary">
@@ -30,7 +30,8 @@
 
                                     <div class="form-group">
                                         <label class="small mb-1" for="empEmail">이메일</label>
-                                        <input class="form-control py-4" id="empEmail" name="empEmail" type="email" placeholder="이메일을 입력하세요."/>
+                                        <input class="form-control py-4" id="empEmail" name="empEmail" type="email"
+                                               placeholder="이메일을 입력하세요."/>
                                     </div>
                                     <div class="form-group">
                                         <label class="small mb-1" for="empPw">비밀번호</label>
@@ -39,15 +40,11 @@
                                     </div>
                                     <div class="form-group">
                     					<span class="font-weight-bold text-white bg-dark"
-                                          id="LoginCheck"></span>
+                                              id="LoginCheck"></span>
                                     </div>
                                     <div class="row">
                                         <div class="col-8">
-                                            <div class="checkbox icheck">
-<%--                                                <label>--%>
-<%--                                                    <input type="checkbox" name="remember_us" value="${checked}"> 로그인유지--%>
-<%--                                                </label>--%>
-                                            </div>
+
                                         </div>
                                         <!-- /.col -->
                                         <div class="col-8">

@@ -61,7 +61,7 @@ public class PjtController {
 
         pjtService.register(pjtVO);
         rttr.addFlashAttribute("Message", "PJT register success");
-        return "redirect:/main";
+        return "/project/main";
     }
 
     //프로젝트 조회(전체)

@@ -69,10 +69,46 @@
                                     <td class="checkbox" onclick="event.cancelBubble=true;">
                                         <input name="RowCheck" type="checkbox" value="${pjtList.no}"/>
                                     </td>
-                                    <td><c:out value="${pjtList.pjtClient}"/></td>
-                                    <td><c:out value="${pjtList.pjtStC}"/></td>
-                                    <td><c:out value="${pjtList.pjtDivC}"/></td>
-                                    <td><c:out value="${pjtList.pjtOrgC}"/></td>
+                                    <td><c:out value="${pjtList.pjtC}"/></td>
+                                    <c:choose>
+                                        <c:when test = "${pjtList.pjtStC  == 'B00'}">
+                                            <td>시작예정</td>
+                                        </c:when>
+                                        <c:when test = "${pjtList.pjtStC  == 'B01'}">
+                                            <td>기획</td>
+                                        </c:when>
+                                        <c:when test = "${pjtList.pjtStC  == 'B02'}">
+                                            <td>개발</td>
+                                        </c:when>
+                                        <c:when test = "${pjtList.pjtStC  == 'B03'}">
+                                            <td>테스트</td>
+                                        </c:when>
+                                    </c:choose>
+                                    <c:choose>
+                                        <c:when test = "${pjtList.pjtDivC  == 'A01'}">
+                                            <td>ECM</td>
+                                        </c:when>
+                                        <c:when test = "${pjtList.pjtDivC  == 'A02'}">
+                                            <td>OCR</td>
+                                        </c:when>
+                                    </c:choose>
+                                    <c:choose>
+                                        <c:when test = "${pjtList.pjtOrgC  == '001'}">
+                                            <td>한국은행</td>
+                                        </c:when>
+                                        <c:when test = "${pjtList.pjtOrgC  == '002'}">
+                                            <td>산업은행</td>
+                                        </c:when>
+                                        <c:when test = "${pjtList.pjtOrgC  == '003'}">
+                                            <td>기업은행</td>
+                                        </c:when>
+                                        <c:when test = "${pjtList.pjtOrgC  == '004'}">
+                                            <td>KB국민은행</td>
+                                        </c:when>
+                                        <c:when test = "${pjtList.pjtOrgC  == '005'}">
+                                            <td>수협은행</td>
+                                        </c:when>
+                                    </c:choose>
                                     <td><c:out value="${pjtList.pjtClient}"/></td>
                                     <td><c:out value="${pjtList.pjtNm }"/></td>
                                     <td><c:out value="${pjtList.pjtEmpList }"/></td>

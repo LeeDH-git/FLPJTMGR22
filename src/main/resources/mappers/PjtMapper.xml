@@ -6,16 +6,17 @@
 <mapper namespace="org.leedh.mapper.PjtMapper">
 
     <!--프로젝트 등록-->
-    <insert id="pjtRegister" >
+    <insert id="pjtRegister">
 
         INSERT ALL
-        INTO FL_PJT_CODE
-            VALUES (SEQ_FLPJT_C_NO.NEXTVAL,#{pjtC},#{pjtDivC},#{pjtStC},#{pjtOrgC})
+            INTO FL_PJT_CODE
+        VALUES (SEQ_FLPJT_C_NO.NEXTVAL, #{pjtC} || SEQ_FLPJT_C.NEXTVAL, #{pjtDivC}, #{pjtStC}, #{pjtOrgC})
         INTO FL_PROJECT
-            VALUES (SEQ_FLPJT_NO.nextval,#{pjtC},#{pjtClient},#{pjtNm},
-                    #{pjtEmpList},#{pjtPm},#{pjtStartDate},
-                    #{pjtEndDate},#{pjtEndYn},#{pjtStC})
-        SELECT * FROM dual
+        VALUES (SEQ_FLPJT_C_NO.CURRVAL, #{pjtC} || SEQ_FLPJT_C.CURRVAL, #{pjtClient}, #{pjtNm},
+                #{pjtEmpList}, #{pjtPm}, #{pjtStartDate},
+                #{pjtEndDate}, #{pjtEndYn}, #{pjtStC})
+        SELECT *
+        FROM dual
 
     </insert>
 
@@ -23,68 +24,64 @@
     <!-- 프로젝트 전체 호출 -->
     <select id="pjtShow" parameterType="PjtVO" resultType="PjtVO">
 
-		SELECT
-            PJC.NO as no,
-            PJC.PJT_C as pjtC,
-            PJC.PJT_ST_C as pjtStC,
-            PJC.PJT_DIV_C as pjtDivC,
-            PJT_ORG_C as pjtOrgC,
-            PJT_CLIENT as pjtClient,
-            PJT_NM as pjtNm,
-            PJT_EMP_LIST as pjtEmpList,
-            PJT_PM as pjtPm,
-            PJT_START_DATE as pjtStartDate,
-            PJT_End_DATE as pjtEndDate,
-            PJT_END_YN as pjtEndYn    
+        SELECT PJC.NO         as no,
+               PJC.PJT_C      as pjtC,
+               PJC.PJT_ST_C   as pjtStC,
+               PJC.PJT_DIV_C  as pjtDivC,
+               PJT_ORG_C      as pjtOrgC,
+               PJT_CLIENT     as pjtClient,
+               PJT_NM         as pjtNm,
+               PJT_EMP_LIST   as pjtEmpList,
+               PJT_PM         as pjtPm,
+               PJT_START_DATE as pjtStartDate,
+               PJT_End_DATE   as pjtEndDate,
+               PJT_END_YN     as pjtEndYn
         FROM FL_PROJECT PJT
-                JOIN FL_PJT_CODE PJC
-                ON PJT.PJT_C = PJC.PJT_C
+                 JOIN FL_PJT_CODE PJC
+                      ON PJT.PJT_C = PJC.PJT_C
         where PJT.PJT_C = PJC.PJT_C
     </select>
-	
-	<!--  프로젝트 수정 -->
+
+    <!--  프로젝트 수정 -->
     <select id="pjtEdit" statementType="CALLABLE" parameterType="PjtVO" resultType="PjtVO">
-            {
-                CALL P_UPDATE_PJT(#{pjtDivC},#{pjtOrgC},
-                    #{pjtStC},#{pjtEmpList},#{pjtPm},#{pjtStartDate},#{pjtEndDate},#{pjtEndYn})
-            }
+        {
+            CALL P_UPDATE_PJT(#{pjtDivC}, #{pjtOrgC},
+                              #{pjtStC}, #{pjtEmpList}, #{pjtPm}, #{pjtStartDate}, #{pjtEndDate}, #{pjtEndYn})
+        }
     </select>
-		
+
 
     <!--  프로젝트 삭제  -->
-    <delete id="deletePjtCode" >
+    <delete id="deletePjtCode">
         DELETE
             FL_PJT_CODE
-        WHERE
-            NO = #{no}
+        WHERE NO = #{no}
     </delete>
 
     <delete id="deletePjt">
         DELETE
             FL_PROJECT
-        WHERE
-            NO = #{no}
+        WHERE NO = #{no}
     </delete>
 
 
-    <select id="memberunion"  parameterType="PjtVO" resultType="PjtVO">
-        SELECT
-            PJC.NO as no,
-            PJC.PJT_C as pjtC,
-            PJC.PJT_ST_C as pjtStC,
-            PJT_CLIENT as pjtClient,
-            PJT_NM as pjtNm,
-            PJT_EMP_LIST as pjtEmpList,
-            PJT_PM as pjtPm,
-            PJT_START_DATE as pjtStartDate,
-            PJT_End_DATE as pjtEndDate,
-            PJT_END_YN as pjtEndYn,
-            PJC.PJT_ST_C as pjtStC,
-            PJT_ORG_C as pjtOrgC
+    <select id="memberunion" parameterType="PjtVO" resultType="PjtVO">
+        SELECT PJC.NO         as no,
+               PJC.PJT_C      as pjtC,
+               PJC.PJT_ST_C   as pjtStC,
+               PJT_CLIENT     as pjtClient,
+               PJT_NM         as pjtNm,
+               PJT_EMP_LIST   as pjtEmpList,
+               PJT_PM         as pjtPm,
+               PJT_START_DATE as pjtStartDate,
+               PJT_End_DATE   as pjtEndDate,
+               PJT_END_YN     as pjtEndYn,
+               PJC.PJT_ST_C   as pjtStC,
+               PJT_ORG_C      as pjtOrgC
 
         FROM FL_PROJECT PJT
-                JOIN FL_PJT_CODE PJC
-                ON PJT.PJT_C = PJC.PJT_C
+                 JOIN FL_PJT_CODE PJC
+                      ON PJT.PJT_C = PJC.PJT_C
         where PJT.PJT_C = PJC.PJT_C
     </select>
 
