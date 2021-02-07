@@ -49,17 +49,29 @@
                             </thead>
 
                             <tbody>
-                            <c:forEach var="item" items="${empList}" varStatus="vs">
-                                <tr onClick="openChild();">
-                                    <td class="checkbox" onclick="event.cancelBubble=true;"><input name="RowCheck" type="checkbox" value="${item.no}"/></td>
-                                    <td onClick="setChildText(${item.empNo})"><c:out value="${item.empNo}"/></td>
-                                    <td><c:out value="${item.empNm}"/></td>
-                                    <td><c:out value="${item.empEmail}"/></td>
-                                    <td><c:out value="${item.empPhoneNo}"/></td>
-                                    <td><c:out value="${item.empEmerNo}"/></td>
-                                    <td><c:out value="${item.empJoinDate }"/></td>
-                                    <td><c:out value="${item.pjtPosC }"/></td>
-                                    <td><c:out value="${item.pjtLvC }"/></td>
+                            <c:forEach var="empList" items="${empList}" varStatus="vs">
+                                <tr onclick="empOpenChild('${empList.empNm}',
+                                        '${empList.empEmail}',
+                                        '${empList.empPhoneNo}',
+                                        '${empList.empEmerNo}',
+                                        '${empList.empJoinDate}',
+                                        '${empList.pjtPosC}',
+                                        '${empList.pjtLvC}');"
+                                    onmouseover="this.style.backgroundColor='#9FB6FF'"
+                                    onmouseout="this.style.backgroundColor=''"
+                                    style="cursor:pointer">
+
+                                    <td class="checkbox" onclick="event.cancelBubble=true;">
+                                        <input class="" name="RowCheck" type="checkbox" value="${empList.no}"/>
+                                    </td>
+                                    <td><c:out value="${empList.empNo}"/></td>
+                                    <td><c:out value="${empList.empNm}"/></td>
+                                    <td><c:out value="${empList.empEmail}"/></td>
+                                    <td><c:out value="${empList.empPhoneNo}"/></td>
+                                    <td><c:out value="${empList.empEmerNo}"/></td>
+                                    <td><c:out value="${empList.empJoinDate }"/></td>
+                                    <td><c:out value="${empList.pjtPosC }"/></td>
+                                    <td><c:out value="${empList.pjtLvC }"/></td>
                                 </tr>
                             </c:forEach>
                             </tbody>

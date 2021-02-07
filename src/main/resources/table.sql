@@ -17,6 +17,7 @@ GRANT DROP ANY TABLE TO PRGMGTEST;
 GRANT CREATE TRIGGER TO PRGMGTEST;
 GRANT CREATE TYPE TO PRGMGTEST;
 GRANT CREATE VIEW TO PRGMGTEST;
+
 GRANT CREATE ANY INDEX, ALTER ANY INDEX, DROP ANY INDEX TO PRGMGTEST;
 
 ----------------------------------------------------------------------------------
@@ -174,6 +175,7 @@ CREATE SEQUENCE SEQ_FLPJT_NO --시퀀스이름
 
 -- 프로시저
 
+-- 로그인 프로시저
 create PROCEDURE P_LOGIN_DATE
 (
     v_login_date IN varchar2,
@@ -203,7 +205,46 @@ BEGIN
 END P_LOGIN_DATE;
 
 
+-- 프로젝트 업데이트 프로시저
+CREATE PROCEDURE P_UPDATE_PJT(
+    v_pjtDivC IN varchar2,
+    v_pjtOrgC IN varchar2,
+    v_pjtStC IN varchar2,
+    v_pjtEmpList IN varchar2,
+    v_pjtPm IN varchar2,
+    v_pjtStartDate IN varchar2,
+    v_pjtEndDate IN varchar2,
+    v_pjtEndYn IN varchar2
+)
+    IS
 
+BEGIN
 
+    MERGE INTO FL_PJT_CODE PJC
+    USING FL_PROJECT PJT
+    ON (PJC.PJT_C = PJT.PJT_C)
+    WHEN MATCHED THEN
+        UPDATE
+        SET PJC.PJT_DIV_C = v_pjtDivC,
+            PJC.PJT_ORG_C = v_pjtOrgC,
+            PJC.PJT_ST_C = v_pjtStC
+        WHERE PJC.PJT_C = PJT.PJT_C;
+
+    MERGE INTO FL_PROJECT PJT
+    USING FL_PJT_CODE PJC
+    ON (PJC.PJT_C = PJT.PJT_C)
+    WHEN MATCHED THEN
+        UPDATE
+        SET  PJT.PJT_EMP_LIST = v_pjtEmpList,
+             PJT.PJT_PM = v_pjtPm,
+             PJT.PJT_START_DATE = v_pjtStartDate,
+             PJT.PJT_END_DATE = v_pjtEndDate,
+             PJT.PJT_END_YN = v_pjtEndYn,
+             PJT.PJT_ST_C = v_pjtStC
+        WHERE PJC.PJT_C = PJT.PJT_C;
+
+    COMMIT;
+
+END P_UPDATE_PJT;
 
 

@@ -43,42 +43,14 @@
     </select>
 	
 	<!--  프로젝트 수정 -->
-		<select id="pjtEdit" parameterType="PjtVO" resultType="PjtVO">
+    <select id="pjtEdit" statementType="CALLABLE" parameterType="PjtVO" resultType="PjtVO">
+            {
+                CALL P_UPDATE_PJT(#{pjtDivC},#{pjtOrgC},
+                    #{pjtStC},#{pjtEmpList},#{pjtPm},#{pjtStartDate},#{pjtEndDate},#{pjtEndYn})
+            }
+    </select>
 		
 
-<!--  		UPDATE FL_PJT_CODE PJC
-			RIGHT JOIN FL_PROJECT PJT ON(PJT.#{pjtC} = PJC.#{pjtC})
-			SET PJT.PJT_CLIENT =#{pjtClient},
-			PJT.PJT_NM = #{pjtNm},
-			PJT.PJT_EMP_LIST = #{pjtEmpList},
-			PJT.PJT_PM = #{pjtPm},
-			PJT.PJT_START_DATE = #{pjtStartDate},
-			PJT.PJT_END_DATE =#{pjtEndDate},
-			PJT.PJT_END_YN = #{pjtEndYn},
-			PJT.PJT_ST_C = #{pjtStC},
-			PJC.PJT_ST_C = #{pjtStC},
-			PJC.PJT_DIV.C = #{pjtDivC},
-			PJC.PJT_ORG_C = #{pjtOrgC}
-		WHERE FL_PJT_CODE.PJT_C = #{pjtC} -->
-		
-		
-	<!-- UPDATE FL_PROJECT as PJT,
-			   FL_PJT_CODE as PJC
-		SET PJT.PJT_CLIENT =#{pjtClient},
-			PJT.PJT_NM = #{pjtNm},
-			PJT.PJT_EMP_LIST = #{pjtEmpList},
-			PJT.PJT_PM = #{pjtPm},
-			PJT.PJT_START_DATE = #{pjtStartDate},
-			PJT.PJT_END_DATE =#{pjtEndDate},
-			PJT.PJT_END_YN = #{pjtEndYn},
-			PJT.PJT_ST_C = #{pjtStC},
-			PJC.PJT_ST_C = #{pjtStC},
-			PJC.PJT_DIV.C = #{pjtDivC},
-			PJC.PJT_ORG_C = #{pjtOrgC}
-		WHERE PJC.PJT_C = #{pjtC}-->
-		
-	</select>
-	
     <!--  프로젝트 삭제  -->
     <delete id="deletePjtCode" >
         DELETE
@@ -97,7 +69,6 @@
 
     <select id="memberunion"  parameterType="PjtVO" resultType="PjtVO">
         SELECT
-
             PJC.NO as no,
             PJC.PJT_C as pjtC,
             PJC.PJT_ST_C as pjtStC,

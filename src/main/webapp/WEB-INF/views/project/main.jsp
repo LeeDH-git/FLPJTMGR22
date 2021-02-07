@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var='root' value="${pageContext.request.contextPath }/"/>
+<%@ include file="/resources/plugin/plugin.jsp" %>
 
 <!DOCTYPE html>
 <html>
@@ -11,9 +12,8 @@
     <meta name="description" content=""/>
     <meta name="author" content=""/>
     <title>Focusleader Project Manager</title>
-    <%@ include file="/resources/plugin/plugin.jsp" %>
 </head>
-<body class="sb-nav-fixed">
+<body class="sb-nav-fixed" onload="backCheck();">
 
 <!-- 상단 메뉴 부분 -->
 <c:import url="/WEB-INF/views/include/top.jsp"/>
@@ -75,7 +75,9 @@
                                 <i class="fas fa-chart-area mr-1"></i>
                                 Area Chart Example
                             </div>
-                            <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
+                            <div class="card-body">
+                                <canvas id="myAreaChart" width="100%" height="40"></canvas>
+                            </div>
                         </div>
                     </div>
                     <div class="col-xl-6">
@@ -84,7 +86,9 @@
                                 <i class="fas fa-chart-bar mr-1"></i>
                                 Bar Chart Example
                             </div>
-                            <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
+                            <div class="card-body">
+                                <canvas id="myBarChart" width="100%" height="40"></canvas>
+                            </div>
                         </div>
                     </div>
                 </div>

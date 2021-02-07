@@ -51,7 +51,7 @@ public class PjtServiceImpl implements PjtService{
     }
 
     @Override
-    public List<PjtVO> memberunion() throws Exception {
-        return projectDao.memberunion();
+    public List<PjtVO> memberUnion() throws Exception {
+        return projectDao.memberUnion();
     }
 }
