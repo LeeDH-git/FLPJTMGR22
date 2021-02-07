@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/plugin/js/backspace.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/plugin/js/pwChk.js"></script>
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <%@ include file="/resources/plugin/plugin.jsp" %>
 
@@ -53,7 +54,7 @@
                                         <!-- /.col -->
                                     </div>
                                     <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                                        <a class="small" href="">비밀번호를 잊으셨나요?</a>
+                                        <a class="small" href="${pageContext.request.contextPath}/user/findPwform">비밀번호를 잊으셨나요?</a>
                                     </div>
                                 </form>
                             </div>

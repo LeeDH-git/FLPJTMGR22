@@ -1,6 +1,10 @@
 package org.leedh.user.service;
 
+import com.sun.org.apache.xml.internal.utils.StringToIntTable;
 import org.leedh.user.vo.EmpVO;
+
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
 public interface MemberService {
 
@@ -15,7 +19,7 @@ public interface MemberService {
 
     void memberDelete(EmpVO vo) throws Exception;
 
-    int passChk(EmpVO vo) throws Exception;
+    void find_pw(HttpServletResponse response,EmpVO vo) throws Exception;
 
     int idChk(EmpVO vo) throws Exception;
     

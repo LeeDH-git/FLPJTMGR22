@@ -20,7 +20,7 @@ public interface MemberDAO {
     void memberDelete(EmpVO vo) throws Exception;
 
     // 패스워드 체크
-    int passChk(EmpVO vo) throws Exception;
+    int update_pw(EmpVO vo) throws Exception;
 
     // 아이디 중복체크
     int idChk(EmpVO vo) throws Exception;

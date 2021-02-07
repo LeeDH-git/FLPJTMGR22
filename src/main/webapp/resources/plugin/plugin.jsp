@@ -18,4 +18,5 @@
 <script src="${pageContext.request.contextPath}/resources/plugin/js/deleteJS.js"></script>
 <script src="${pageContext.request.contextPath}/resources/plugin/js/openChildJS.js"></script>
 <script src="${pageContext.request.contextPath}/resources/plugin/js/registerJS.js"></script>
+<script src="${pageContext.request.contextPath}/resources/plugin/js/pwChk.js"></script>
 
