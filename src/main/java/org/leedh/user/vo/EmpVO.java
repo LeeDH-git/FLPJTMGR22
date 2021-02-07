@@ -29,5 +29,4 @@ public class EmpVO {
     private String pjtPosC;
     private boolean rememberEmail;
 
-
 }

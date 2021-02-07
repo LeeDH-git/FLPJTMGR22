@@ -1,4 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ include file="/resources/plugin/plugin.jsp" %>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/plugin/js/backspace.js"></script>
+<%@ include file="/resources/plugin/plugin.jsp" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +13,6 @@
     <meta name="description" content=""/>
     <meta name="author" content=""/>
     <title>Focusleader Project Manager 직원정보</title>
-    <%@ include file="/resources/plugin/plugin.jsp" %>
 
 </head>
 <body class="bg-primary">

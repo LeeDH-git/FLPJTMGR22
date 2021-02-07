@@ -142,20 +142,21 @@ CREATE TABLE FL_PJT_EMP_ADMIN
 
 -- 시퀀스 생성
 
+-- 사번 시퀀스
+CREATE SEQUENCE SEQ_EMP_EMPNO --시퀀스이름
+    INCREMENT BY 001 -- 증감숫자 1
+    START WITH 1 -- 시작숫자 1
+    MINVALUE 001 -- 최소값 1
+    MAXVALUE 10000 -- 최대값 10000
+    NOCYCLE; -- 순환하지않음
+
+-- NO 컬럼 시퀀스
 CREATE SEQUENCE SEQ_EMP_NO --시퀀스이름
     INCREMENT BY 1 -- 증감숫자 1
     START WITH 1 -- 시작숫자 1
     MINVALUE 1 -- 최소값 1
     MAXVALUE 10000 -- 최대값 10000
     NOCYCLE; -- 순환하지않음
-
-
-CREATE SEQUENCE SEQ_EMP_ADMIN_NO --시퀀스이름
-    INCREMENT BY 1 -- 증감숫자 1
-    START WITH 1 -- 시작숫자 1
-    MINVALUE 1 -- 최소값 1
-    MAXVALUE 1000 -- 최대값 10000
-    NOCYCLE; -- 순환 하지않음
 
 CREATE SEQUENCE SEQ_FLPJT_C_NO --시퀀스이름
     INCREMENT BY 1 -- 증감숫자 1
@@ -164,27 +165,24 @@ CREATE SEQUENCE SEQ_FLPJT_C_NO --시퀀스이름
     MAXVALUE 10000 -- 최대값 10000
     NOCYCLE; -- 순환하지않음
 
-
-CREATE SEQUENCE SEQ_FLPJT_NO --시퀀스이름
+CREATE SEQUENCE SEQ_FLPJT_C --시퀀스이름
     INCREMENT BY 1 -- 증감숫자 1
-    START WITH 1 -- 시작숫자 1
-    MINVALUE 1 -- 최소값 1
-    MAXVALUE 1000 -- 최대값 10000
-    NOCYCLE; -- 순환 하지않음
-
+    START WITH 100 -- 시작숫자 1
+    MINVALUE 100 -- 최소값 1
+    MAXVALUE 10000 -- 최대값 10000
+    NOCYCLE; -- 순환하지않음
 
 -- 프로시저
 
 -- 로그인 프로시저
-create PROCEDURE P_LOGIN_DATE
-(
+create PROCEDURE P_LOGIN_DATE(
     v_login_date IN varchar2,
     v_emp_email1 IN varchar2
 )
     IS
 
     v_emp_email2 FL_EMP.EMP_EMAIL%TYPE;
-    v_emp_pw  FL_EMP.EMP_PW%TYPE;
+    v_emp_pw     FL_EMP.EMP_PW%TYPE;
 
 BEGIN
 
@@ -193,8 +191,8 @@ BEGIN
     FROM FL_EMP
     WHERE EMP_EMAIL = v_emp_email1;
 
-    DBMS_OUTPUT.PUT_LINE('이메일 : '||v_emp_email2);
-    DBMS_OUTPUT.PUT_LINE('PW : '||v_emp_pw);
+    DBMS_OUTPUT.PUT_LINE('이메일 : ' || v_emp_email2);
+    DBMS_OUTPUT.PUT_LINE('PW : ' || v_emp_pw);
 
     UPDATE FL_EMP_ADMIN
     SET LOGIN_DATE = v_login_date
@@ -227,7 +225,7 @@ BEGIN
         UPDATE
         SET PJC.PJT_DIV_C = v_pjtDivC,
             PJC.PJT_ORG_C = v_pjtOrgC,
-            PJC.PJT_ST_C = v_pjtStC
+            PJC.PJT_ST_C  = v_pjtStC
         WHERE PJC.PJT_C = PJT.PJT_C;
 
     MERGE INTO FL_PROJECT PJT
@@ -235,12 +233,12 @@ BEGIN
     ON (PJC.PJT_C = PJT.PJT_C)
     WHEN MATCHED THEN
         UPDATE
-        SET  PJT.PJT_EMP_LIST = v_pjtEmpList,
-             PJT.PJT_PM = v_pjtPm,
-             PJT.PJT_START_DATE = v_pjtStartDate,
-             PJT.PJT_END_DATE = v_pjtEndDate,
-             PJT.PJT_END_YN = v_pjtEndYn,
-             PJT.PJT_ST_C = v_pjtStC
+        SET PJT.PJT_EMP_LIST   = v_pjtEmpList,
+            PJT.PJT_PM         = v_pjtPm,
+            PJT.PJT_START_DATE = v_pjtStartDate,
+            PJT.PJT_END_DATE   = v_pjtEndDate,
+            PJT.PJT_END_YN     = v_pjtEndYn,
+            PJT.PJT_ST_C       = v_pjtStC
         WHERE PJC.PJT_C = PJT.PJT_C;
 
     COMMIT;

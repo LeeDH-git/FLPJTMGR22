@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/plugin/js/backspace.js"></script>
+<%@ include file="/resources/plugin/plugin.jsp" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,56 +12,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <meta name="description" content=""/>
     <meta name="author" content=""/>
-    <%@ include file="/resources/plugin/plugin.jsp" %>
     <title>Focusleader Project Manager 회원가입</title>
 </head>
-<%--<script type="text/javascript">
-    $(document).ready(function () {
 
-        $("#submit").on("click", function () {
-            if ($("#empEmail").val() == "") {
-                alert("이메일을 입력해주세요.");
-                $("#empEmail").focus();
-                return false;
-            }
-            if ($("#empPw").val() == "") {
-                alert("비밀번호를 입력해주세요.");
-                $("#empPw").focus();
-                return false;
-            }
-            if ($("#empNm").val() == "") {
-                alert("성명을 입력해주세요.");
-                $("#empNm").focus();
-                return false;
-            }
-            var idChkVal = $("#idChk").val();
-            if (idChkVal == "N") {
-                alert("중복확인 버튼을 눌러주세요.");
-            } else if (idChkVal == "Y") {
-                $("#regForm").submit();
-            }
-        });
-    })
-
-    function fn_idChk() {
-        $.ajax({
-            url: "/user/idChk",
-            type: "post",
-            dataType: "json",
-            data: {"empEmail": $("#empEmail").val()},
-            success: function (data) {
-                if (data === 1) {
-                    alert("중복된 이메일 입니다.");
-                } else if ($("#empEmail").val() === '') {
-                    alert("이메일을 입력해주세요.");
-                } else if (data === 0) {
-                    $("#idChk").attr("value", "Y");
-                    alert("사용가능한 이메일 입니다.");
-                }
-            }
-        })
-    }
-</script>--%>
 <body class="bg-primary">
 <div id="layoutAuthentication_content">
     <main>
@@ -73,7 +29,7 @@
                                 <div class=form-group">
                                     <label class="small mb-1" for="empNo">사원 번호</label>
                                     <input class="form-control py-4" id="empNo" name="empNo" type="text"
-                                           placeholder="사원번호 입력 (YYMM000)"/>
+                                           placeholder="사원번호 입력 (YYMM)"/>
                                 </div>
                                 <div class="form-group">
                                     <label class="small mb-1" for="empNm">이름</label>
@@ -95,10 +51,7 @@
                                     <input class="form-control py-4" id="empPw" name="empPw" type="password"
                                            placeholder="비밀번호"/>
                                 </div>
-                                <%--     <div class="form-group">
-                                         <label class="small mb-1">비밀번호 확인</label>
-                                         <input class="form-control py-4" type="password" placeholder="비밀번호 확인"/>
-                                     </div>--%>
+
                                 <div class="form-group">
                                     <label class="small mb-1" for="empPhoneNo">휴대전화 번호</label>
                                     <input class="form-control py-4" id="empPhoneNo" name="empPhoneNo" type="text"
@@ -118,17 +71,17 @@
                                     <label class="small mb-1" for="pjtPosC">직위</label>
                                     <select class="form-control py" id="pjtPosC" name="pjtPosC"
                                             style="width:130px;text-align-last:center">
-                                        <option value="none">=== 선택 ===</option>
-                                        <option value="A001">사원</option>
-                                        <option value="A002">주임</option>
-                                        <option value="A003">대리</option>
-                                        <option value="A004">과장</option>
-                                        <option value="A005">차장</option>
-                                        <option value="A006">부장</option>
-                                        <option value="A007">이사</option>
-                                        <option value="A008">상무</option>
-                                        <option value="A009">전무</option>
-                                        <option value="A010">대표이사</option>
+                                        <option value="none">= 선택 =</option>
+                                        <option value="사원">사원</option>
+                                        <option value="주임">주임</option>
+                                        <option value="대리">대리</option>
+                                        <option value="과장">과장</option>
+                                        <option value="차장">차장</option>
+                                        <option value="부장">부장</option>
+                                        <option value="이사">이사</option>
+                                        <option value="상무">상무</option>
+                                        <option value="전무">전무</option>
+                                        <option value="대표이사">대표이사</option>
                                     </select>
 
                                     <div class="form-group">
@@ -136,11 +89,11 @@
                                         <br/>
                                         <select class="form-control py" id="pjtLvC" name="pjtLvC"
                                                 style="width:130px;text-align-last:center">
-                                            <option value="none">=== 선택 ===</option>
-                                            <option value="A01">초급</option>
-                                            <option value="A02">중급</option>
-                                            <option value="A03">고급</option>
-                                            <option value="A04">특급</option>
+                                            <option value="none">= 선택 =</option>
+                                            <option value="초급">초급</option>
+                                            <option value="중급">중급</option>
+                                            <option value="고급">고급</option>
+                                            <option value="특급">특급</option>
                                         </select>
                                     </div>
                                     <div style="text-align:center;">

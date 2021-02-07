@@ -7,6 +7,7 @@ import org.leedh.user.vo.EmpVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.parameters.P;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -19,9 +20,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.ui.Model;
 
 import java.text.DateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -108,7 +107,7 @@ public class MemberController {
             log.info("비밀번호 일치");
             service.login(vo);
             session.setAttribute("email", id);
-            session.setAttribute("name",vo.getEmpNm());
+            session.setAttribute("name", vo.getEmpNm());
         } else {
             log.info("비밀번호 불일치");
             return "redirect:/";
@@ -183,6 +182,7 @@ public class MemberController {
     public String empShow(Model model) throws Exception {
 
         List<EmpVO> empVo = service.empShow();
+
         model.addAttribute("empList", empVo);
 
         return "/user/empShow";

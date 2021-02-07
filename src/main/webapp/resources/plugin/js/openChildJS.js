@@ -1,5 +1,3 @@
-var empOpenWin;
-
 function empOpenChild(empNo, empNm, empEmail, empPhoneNo, empEmerNo, empJoinDate, pjtPosC, pjtLvC) {
 
     // window.name = "부모창 이름";
@@ -68,5 +66,11 @@ function pjtSetChildText(pjtC, pjtClient, pjtNm, pjtEmpList,
         pjtOpenWin.document.getElementById("pjtOrgC").value = pjtOrgC;
 
     }
+
+}
+
+var editColumn;
+function lVPosEdit() {
+    var posc = '<c:out value="${empList.pjtPosC }"/>';
 
 }

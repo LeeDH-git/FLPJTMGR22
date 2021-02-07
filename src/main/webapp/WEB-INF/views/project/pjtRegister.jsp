@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var='root' value="${pageContext.request.contextPath }/"/>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/plugin/js/backspace.js"></script>
+<%@ include file="/resources/plugin/plugin.jsp" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +13,6 @@
     <meta name="description" content=""/>
     <meta name="author" content=""/>
     <title>Focusleader Project Manager</title>
-    <%@ include file="/resources/plugin/plugin.jsp" %>
 </head>
 <body class="bg-primary">
 
@@ -27,37 +28,27 @@
                             </div>
                             <div class="card-body">
                                 <form action="${pageContext.request.contextPath}/project/pjtRegister" method="post">
-                                    <div class=form-group">
-                                        <label class="small mb-1" for="pjtC">프로젝트 코드</label> <input
-                                            class="form-control py-4" id="pjtC" name="pjtC" type="text"
-                                            placeholder="프로젝트 코드 입력 기관코드+프로젝트업무분류코드+000"/>
-                                    </div>
+
                                     <div class="form-group">
                                         <label class="small mb-1" for="pjtOrgC">기관명</label>
                                         <select class="form-control py" id="pjtOrgC" name="pjtOrgC"
                                                 style="width:130px;text-align-last:center">
                                             <option value="none">=== 선택 ===</option>
-                                            <option value="001">한국은행</option>
-                                            <option value="002">산업은행</option>
-                                            <option value="003">기업은행</option>
-                                            <option value="004">KB국민은행</option>
-                                            <option value="005">수협은행</option>
+                                            <option value="한국은행">한국은행</option>
+                                            <option value="산업은행">산업은행</option>
+                                            <option value="기업은행">기업은행</option>
+                                            <option value="KB국민은행">KB국민은행</option>
+                                            <option value="수협은행">수협은행</option>
                                         </select>
                                     </div>
-                                    <!--     <div class="form-group">
-                                           <lable class="small mb-1" for="pjtOrgDiv">기관종류</lable>
-                                           <input class="form-control py-4" id=pjtOrgDiv
-                                           " type="text"
-                                           placeholder="기관 종류 입력" />
-                                       </div> -->
 
                                     <div class="form-group">
                                         <label class="small mb-1" for="pjtDivC">프로젝트 업무분류</label>
                                         <select class="form-control py" id="pjtDivC" name="pjtDivC"
                                                 style="width:130px;text-align-last:center">
                                             <option value="none">=== 선택 ===</option>
-                                            <option value="A01">ECM</option>
-                                            <option value="A02">OCR</option>
+                                            <option value="ECM">ECM</option>
+                                            <option value="OCR">OCR</option>
                                         </select>
                                     </div>
 
@@ -66,17 +57,17 @@
                                         <select class="form-control py" id="pjtStC" name="pjtStC"
                                                 style="width:130px;text-align-last:center">
                                             <option value="none">=== 선택 ===</option>
-                                            <option value="B00">시작예정</option>
-                                            <option value="B01">기획</option>
-                                            <option value="B02">개발</option>
-                                            <option value="B03">테스트</option>
+                                            <option value="시작예정">시작예정</option>
+                                            <option value="기획">기획</option>
+                                            <option value="개발">개발</option>
+                                            <option value="테스트">테스트</option>
                                         </select>
                                     </div>
                                     <!--    <div class="col-md-6"> -->
                                     <div class="form-group">
-                                        <label class="small mb-1" for="pjtClient">고객명</label> <input
-                                            class="form-control py-4" id="pjtClient" name="pjtClient" type="text"
-                                            placeholder="고객명 입력"/>
+                                        <label class="small mb-1" for="pjtClient">고객명</label>
+                                        <input class="form-control py-4" id="pjtClient" name="pjtClient" type="text"
+                                               placeholder="고객명 입력"/>
                                     </div>
 
                                     <div class=form-group">
@@ -86,9 +77,9 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="small mb-1" for="pjtEmpList">프로젝트 투입인원</label>
+                                        <label class="small mb-1" for="pjtEmpList">프로젝트 투입인원</label>
                                         <input class="form-control py-4" id="pjtEmpList" name="pjtEmpList" type="text"
-                                               placeholder="프로젝트 투입인력 입력 ex)홍길동, 김철수"/>
+                                               placeholder="프로젝트 투입인력 입력 ex) 홍길동, 김철수"/>
                                     </div>
 
                                     <div class="form-group">
@@ -122,8 +113,7 @@
                                         </select>
                                     </div>
 
-                                    <!-- <input class="form-control py-4" id="inputSkillLevel" type="text" placeholder="ê¸°ì ë±ê¸ ìë ¥"/> -->
-                                    <!--  </div> -->
+
                                     <div style="text-align: center;">
                                         <button type="submit" class="btn btn-primary" id="pjtRegister">등록</button>
                                     </div>

@@ -69,9 +69,53 @@
                                     <td><c:out value="${empList.empEmail}"/></td>
                                     <td><c:out value="${empList.empPhoneNo}"/></td>
                                     <td><c:out value="${empList.empEmerNo}"/></td>
-                                    <td><c:out value="${empList.empJoinDate }"/></td>
-                                    <td><c:out value="${empList.pjtPosC }"/></td>
-                                    <td><c:out value="${empList.pjtLvC }"/></td>
+                                    <td><c:out value="${empList.empJoinDate}"/></td>
+                                    <c:choose>
+                                        <c:when test="${empList.pjtLvC == 'A01'}">
+                                            <td>초급</td>
+                                        </c:when>
+                                        <c:when test="${empList.pjtLvC == 'A02'}">
+                                            <td>중급</td>
+                                        </c:when>
+                                        <c:when test="${empList.pjtLvC == 'A03'}">
+                                            <td>고급</td>
+                                        </c:when>
+                                        <c:when test="${empList.pjtLvC == 'A04'}">
+                                            <td>특급</td>
+                                        </c:when>
+                                    </c:choose>
+                                    <c:choose>
+                                        <c:when test="${empList.pjtPosC  == 'A001'}">
+                                            <td>사원</td>
+                                        </c:when>
+                                        <c:when test="${empList.pjtPosC  == 'A002'}">
+                                            <td>주임</td>
+                                        </c:when>
+                                        <c:when test="${empList.pjtPosC  == 'A003'}">
+                                            <td>대리</td>
+                                        </c:when>
+                                        <c:when test="${empList.pjtPosC  == 'A004'}">
+                                            <td>과장</td>
+                                        </c:when>
+                                        <c:when test="${empList.pjtPosC  == 'A005'}">
+                                            <td>차장</td>
+                                        </c:when>
+                                        <c:when test="${empList.pjtPosC  == 'A006'}">
+                                            <td>부장</td>
+                                        </c:when>
+                                        <c:when test="${empList.pjtPosC  == 'A007'}">
+                                            <td>이사</td>
+                                        </c:when>
+                                        <c:when test="${empList.pjtPosC  == 'A008'}">
+                                            <td>상무</td>
+                                        </c:when>
+                                        <c:when test="${empList.pjtPosC  == 'A009'}">
+                                            <td>전무</td>
+                                        </c:when>
+                                        <c:when test="${empList.pjtPosC  == 'A010'}">
+                                            <td>대표이사</td>
+                                        </c:when>
+                                    </c:choose>
                                 </tr>
                             </c:forEach>
                             </tbody>

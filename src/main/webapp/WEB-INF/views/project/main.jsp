@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var='root' value="${pageContext.request.contextPath }/"/>
 <%@ include file="/resources/plugin/plugin.jsp" %>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/plugin/js/backspace.js" ></script>
 
 <!DOCTYPE html>
 <html>
