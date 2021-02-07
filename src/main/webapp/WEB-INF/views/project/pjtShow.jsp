@@ -129,6 +129,7 @@
                             </tbody>
                         </table>
                         <div>
+                            <p>프로젝트 정보 수정 시 테이블을 클릭해주세요</p>
                             <input type="button" value="삭제" class="btn btn-primary" onclick="pjtDeleteValue()">
                         </div>
                     </div>

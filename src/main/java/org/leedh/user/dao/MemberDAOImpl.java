@@ -4,6 +4,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.leedh.user.vo.EmpVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -24,10 +25,16 @@ public class MemberDAOImpl implements MemberDAO {
         sql.insert(NAMESPACE + ".register", vo);
     }
 
+    // 로그인
     @Override
     public EmpVO login(EmpVO vo) throws Exception {
-
         return sql.selectOne(NAMESPACE + ".login", vo);
+    }
+
+    // 비밀번호 변경
+    @Transactional
+    public int update_pw(EmpVO vo) throws Exception {
+        return sql.update(NAMESPACE + ".update_pw", vo);
     }
 
     //서비스에서 보낸 파라미터들을 memberUpdate(EmpVO vo)에 담습니다.
@@ -46,12 +53,6 @@ public class MemberDAOImpl implements MemberDAO {
         //  #{userId}, #{userPass}에 파라미터값이 매칭이 되겠지요.
         sql.delete(NAMESPACE + ".memberDelete", vo);
 
-    }
-
-    // 패스워드 체크
-    @Override
-    public int passChk(EmpVO vo) throws Exception {
-        return sql.selectOne(NAMESPACE + ".passChk", vo);
     }
 
     // 아이디 중복 체크

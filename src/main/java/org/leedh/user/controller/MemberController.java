@@ -4,28 +4,20 @@ import lombok.extern.slf4j.Slf4j;
 import org.leedh.user.dao.MemberDAO;
 import org.leedh.user.service.MemberService;
 import org.leedh.user.vo.EmpVO;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.parameters.P;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import org.springframework.ui.Model;
-
-import java.text.DateFormat;
-import java.util.*;
-
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 @RequestMapping("/user")
@@ -153,20 +145,16 @@ public class MemberController {
         return "/user/empEdit";
     }
 
-    // 패스워드 체크
-    @ResponseBody
-    @RequestMapping(value = "/passChk", method = RequestMethod.POST)
-    public boolean passChk(EmpVO vo, HttpSession session, HttpServletRequest request) throws Exception {
+    // 비밀번호 찾기 폼
+    @RequestMapping(value = "/findPwform")
+    public String findpwform(HttpServletResponse response, EmpVO vo) throws Exception {
+        return "/user/password";
+    }
 
-        // url 직접 접근시 로그인 화면으로 리다이렉션 /  session.invalidate()로 세션 소거
-        if (request.getHeader("REFERER") == null) {
-            session.invalidate();
-
-        }
-
-        EmpVO login = service.login(vo);
-        boolean pwdChk = pwdEncoder.matches(vo.getEmpPw(), login.getEmpPw());
-        return pwdChk;
+    // 비밀번호 찾기
+    @RequestMapping(value = "/findPw", method = RequestMethod.POST)
+    public void find_pw(@ModelAttribute EmpVO vo, HttpServletResponse response) throws Exception{
+        service.find_pw(response, vo);
     }
 
     // 아이디 중복 체크

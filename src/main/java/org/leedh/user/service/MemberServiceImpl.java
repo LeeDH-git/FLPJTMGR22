@@ -1,11 +1,18 @@
 package org.leedh.user.service;
 
+import org.apache.commons.mail.HtmlEmail;
 import org.leedh.user.dao.MemberDAO;
+import org.leedh.user.vo.EmpAdminVO;
 import org.leedh.user.vo.EmpVO;
+import org.leedh.util.SendEmail;
+import org.omg.CosNaming.NamingContextExtPackage.StringNameHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 @Service
@@ -13,6 +20,7 @@ import java.util.List;
 public class MemberServiceImpl implements MemberService {
 
     private final MemberDAO dao;
+    SendEmail sendEmail = new SendEmail();
 
     @Autowired
     public MemberServiceImpl(MemberDAO dao) {
@@ -96,10 +104,38 @@ public class MemberServiceImpl implements MemberService {
         dao.memberDelete(vo);
     }
 
-    // 패스워드 체크
-    @Override
-    public int passChk(EmpVO vo) throws Exception {
-        return dao.passChk(vo);
+    public void find_pw(HttpServletResponse response,EmpVO vo) throws Exception {
+
+        response.setContentType("text/html;charset=utf-8");
+        PrintWriter out = response.getWriter();
+        String getId = vo.getEmpEmail();
+
+        // 아이디가 없으면
+        int idChk = dao.idChk(vo);
+        if (idChk == 0) {
+            out.print("아이디가 없습니다.");
+            out.close();
+        }
+        // 가입에 사용한 이메일이 아니면
+        else if (!vo.getEmpEmail().equals(getId)) {
+            out.print("잘못된 이메일 입니다.");
+            out.close();
+        } else {
+            // 임시 비밀번호 생성
+            String pw = "";
+            for (int i = 0; i < 12; i++) {
+                pw += (char) ((Math.random() * 26) + 97);
+            }
+            vo.setEmpPw(pw);
+
+            // 비밀번호 변경
+            dao.update_pw(vo);
+            // 비밀번호 변경 메일 발송
+            sendEmail.send_mail(vo,"find_pw");
+
+            out.print("이메일로 임시 비밀번호를 발송하였습니다.");
+            out.close();
+        }
     }
 
     // 아이디 중복 체크

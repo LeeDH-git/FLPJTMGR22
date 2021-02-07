@@ -16,5 +16,6 @@ public class EmpAdminVO {
     private String pjtDutyC;
     private String pjtJgC;
     private String pjtDeptC;
+    private String empAuth;
 
 }
