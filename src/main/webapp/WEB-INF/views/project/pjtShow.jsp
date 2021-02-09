@@ -51,17 +51,18 @@
                             </thead>
 
                             <tbody>
+                            
+                            
                             <c:forEach var="pjtList" items="${pjtList}" varStatus="vs">
                                 <tr onclick="pjtOpenChild('${pjtList.pjtC}',
                                         '${pjtList.pjtClient}',
                                         '${pjtList.pjtStC}',
                                         '${pjtList.pjtDivC}',
                                         '${pjtList.pjtOrgC}',
-                                        '${pjtList.pjtClient}',
                                         '${pjtList.pjtNm}',
                                         '${pjtList.pjtEmpList}',
                                         '${pjtList.pjtPm}',
-                                        '${pjtList.pjtStartDate}',
+                                        '${pjtList.pjtStartDate}', 
                                         '${pjtList.pjtEndDate}',
                                         '${pjtList.pjtEndYn}');"
                                     onmouseover="this.style.backgroundColor='#9FB6FF'"
@@ -143,5 +144,90 @@
     </div>
 </div>
 
+<script>
+var pjtOpenWin;
+
+function pjtOpenChild(pjtC, pjtClient, pjtNm, pjtEmpList,
+                      pjtPm, pjtStartDate, pjtEndDate, pjtEndYn, pjtStC, pjtDivC, pjtOrgC) {
+
+    // window.name = "부모창 이름";
+    window.name = "pjtParentForm";
+    // window.open("open할 window", "자식창 이름", "팝업창 옵션");
+
+    pjtOpenWin = window.open("/project/pjtEdit",
+        "childForm", "width=570, height=950");
+
+    // 일정시간 지연 후 값 넣기
+    setTimeout(function () {
+        pjtSetChildText(pjtC, pjtClient, pjtNm, pjtEmpList,
+            pjtPm, pjtStartDate, pjtEndDate, pjtEndYn, pjtStC, pjtDivC, pjtOrgC);
+    }, 350)
+}
+
+function pjtSetChildText(pjtC, pjtClient , pjtStC , pjtDivC, pjtOrgC ,pjtNm, pjtEmpList,
+                         pjtPm, pjtStartDate, pjtEndDate, pjtEndYn) {
+
+
+        switch (pjtOrgC) {
+            case "001":
+                pjtOrgC ="한국은행";
+                break;
+            case "002":
+                pjtOrgC ="산업은행";
+                break;
+            case "003":
+                pjtOrgC ="기업은행";
+                break;
+            case "004":
+                pjtOrgC = "KB국민은행";
+                break;
+            case "005":
+                pjtOrgC = "수협은행";
+                break;
+        }
+
+        switch (pjtStC) {
+            case "B00":
+                pjtStC = "시작예정";
+                break;
+            case "B01":
+                pjtStC = "기획";
+                break;
+            case "B02":
+                pjtStC = "개발";
+                break;
+            case "B03":
+                pjtStC = "테스트";
+                break;
+        }
+
+        switch (pjtDivC) {
+            case "A01":
+                pjtDivC = "ECM";
+                break;
+            case "A02":
+                pjtDivC = "OCR";
+                break;
+        }
+        
+        
+    if (pjtOpenWin != null) {
+        pjtOpenWin.document.getElementById("pjtC").value = pjtC;
+        pjtOpenWin.document.getElementById("pjtClient").value = pjtClient;
+        pjtOpenWin.document.getElementById("pjtStC").value = pjtStC;
+        pjtOpenWin.document.getElementById("pjtDivC").value = pjtDivC;
+        pjtOpenWin.document.getElementById("pjtOrgC").value = pjtOrgC;
+        pjtOpenWin.document.getElementById("pjtNm").value = pjtNm;
+        pjtOpenWin.document.getElementById("pjtEmpList").value = pjtEmpList;
+        pjtOpenWin.document.getElementById("pjtPm").value = pjtPm;
+        pjtOpenWin.document.getElementById("pjtStartDate").value = pjtStartDate;
+        pjtOpenWin.document.getElementById("pjtEndDate").value = pjtEndDate;
+        pjtOpenWin.document.getElementById("pjtEndYn").value = pjtEndYn;
+
+
+    }
+
+}
+</script>
 </body>
 </html>

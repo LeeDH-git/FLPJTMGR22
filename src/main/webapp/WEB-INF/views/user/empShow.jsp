@@ -50,7 +50,8 @@
 
                             <tbody>
                             <c:forEach var="empList" items="${empList}" varStatus="vs">
-                                <tr onclick="empOpenChild('${empList.empNm}',
+                                <tr onclick="empOpenChild('${empList.empNo}',
+                                		'${empList.empNm}',
                                         '${empList.empEmail}',
                                         '${empList.empPhoneNo}',
                                         '${empList.empEmerNo}',
@@ -75,7 +76,13 @@
                                             <td>초급</td>
                                         </c:when>
                                         <c:when test="${empList.pjtLvC == 'A02'}">
-                                            <td>중급</td>
+                                            <td>중하</td>
+                                        </c:when>
+                                        <c:when test="${empList.pjtLvC == 'A12'}">
+                                            <td>중</td>
+                                        </c:when>                                        
+                                        <c:when test="${empList.pjtLvC == 'A22'}">
+                                            <td>중상</td>
                                         </c:when>
                                         <c:when test="${empList.pjtLvC == 'A03'}">
                                             <td>고급</td>

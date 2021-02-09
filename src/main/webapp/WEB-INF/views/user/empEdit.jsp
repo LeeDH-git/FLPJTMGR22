@@ -61,7 +61,7 @@
                                     <div class="form-group">
 
                                         <label class="small mb-1" for="empJoinDate">입사일</label>
-                                        <input class="form-control py" type='date' id='empJoinDate' name="empJoninDate"
+                                        <input class="form-control py" type='date' id='empJoinDate' name="empJoinDate"
                                                readonly/>
                                     </div>
 
@@ -96,7 +96,7 @@
                                         </select>
                                     </div>
                                     <div style="text-align: center;">
-                                        <button type="submit" class="btn btn-primary" onclick="window.close()">수정
+                                        <button type="submit" class="btn btn-primary">수정
                                         </button>
                                     </div>
                                 </form>

@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/plugin/js/backspace.js"></script>
 <%@ include file="/resources/plugin/plugin.jsp" %>
 
@@ -44,9 +45,9 @@
                                         <label class="small mb-1" for="pjtDivC">프로젝트 업무분류</label>
                                         <select class="form-control py" id="pjtDivC" name="pjtDivC"
                                                 style="width:130px;text-align-last:center">
-                                            <option value="none">=== 선택 ===</option>
-                                            <option value="A01">ECM</option>
-                                            <option value="A02">OCR</option>
+                                                <option value="none">=== 선택 ===</option>
+												<option value="ECM" >ECM</option>
+												<option value="OCR">OCR</option>
                                         </select>
                                     </div>
 
@@ -55,11 +56,11 @@
                                         <select class="form-control py" id="pjtOrgC" name="pjtOrgC"
                                                 style="width:130px;text-align-last:center">
                                             <option value="none">=== 선택 ===</option>
-                                            <option value="001">한국은행</option>
-                                            <option value="002">산업은행</option>
-                                            <option value="003">기업은행</option>
-                                            <option value="004">KB국민은행</option>
-                                            <option value="005">수협은행</option>
+                                            <option value="한국은행">한국은행</option>
+                                            <option value="산업은행">산업은행</option>
+                                            <option value="기업은행">기업은행</option>
+                                            <option value="KB국민은행">KB국민은행</option>
+                                            <option value="수협은행">수협은행</option>
                                         </select>
                                     </div>
 
@@ -111,10 +112,10 @@
                                         <select class="form-control py" id="pjtStC" name="pjtStC"
                                                 style="width:130px;text-align-last:center">
                                             <option value="none">=== 선택 ===</option>
-                                            <option value="B00">시작예정</option>
-                                            <option value="B01">기획</option>
-                                            <option value="B02">개발</option>
-                                            <option value="B03">테스트</option>
+                                            <option value="시작예정">시작예정</option>
+                                            <option value="기획">기획</option>
+                                            <option value="개발">개발</option>
+                                            <option value="테스트">테스트</option>
                                         </select>
                                     </div>
                                     <div style="text-align: center;">

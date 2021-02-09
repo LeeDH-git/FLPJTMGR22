@@ -5,7 +5,7 @@ import org.leedh.user.dao.MemberDAO;
 import org.leedh.user.vo.EmpAdminVO;
 import org.leedh.user.vo.EmpVO;
 import org.leedh.util.SendEmail;
-import org.omg.CosNaming.NamingContextExtPackage.StringNameHelper;
+//import org.omg.CosNaming.NamingContextExtPackage.StringNameHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -38,8 +38,14 @@ public class MemberServiceImpl implements MemberService {
             case "초급":
                 vo.setPjtLvC("A01");
                 break;
-            case "중급":
+            case "중하":
                 vo.setPjtLvC("A02");
+                break;
+            case "중급":
+                vo.setPjtLvC("A12");
+                break;
+            case "중상":
+                vo.setPjtLvC("A22");
                 break;
             case "고급":
                 vo.setPjtLvC("A03");

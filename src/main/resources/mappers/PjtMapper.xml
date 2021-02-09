@@ -44,8 +44,8 @@
 
     <!--  프로젝트 수정 -->
     <select id="pjtEdit" statementType="CALLABLE" parameterType="PjtVO" resultType="PjtVO">
-        {
-            CALL P_UPDATE_PJT(#{pjtDivC}, #{pjtOrgC},
+		{
+            CALL P_UPDATE_PJT(#{pjtC},#{pjtDivC}, #{pjtOrgC},
                               #{pjtStC}, #{pjtEmpList}, #{pjtPm}, #{pjtStartDate}, #{pjtEndDate}, #{pjtEndYn})
         }
     </select>

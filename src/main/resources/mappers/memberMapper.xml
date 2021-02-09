@@ -15,8 +15,8 @@
                 #{empPhoneNo},
                 #{empEmerNo},
                 #{empJoinDate},
-                #{pjtPosC},
-                #{pjtLvC})
+                #{pjtLvC},
+                #{pjtPosC})
         INTO FL_EMP_ADMIN (NO, EMP_NO, EMP_EMAIL, JOIN_DATE, EMP_AUTH)
         VALUES (SEQ_EMP_NO.CURRVAL, #{empNo} || SEQ_EMP_EMPNO.CURRVAL, #{empEmail}, to_char(sysdate, 'yyyy.mm.dd hh24:mi'), 'EMP')
         SELECT *
@@ -48,8 +48,8 @@
         WHERE EMP_EMAIL = #{empEmail}
     </select>
 
-    <!--  프로젝트 수정 -->
-    <update id="empEdit">
+    <!--  회원정보 수정 -->
+ <!--  	<update id="empEdit">
         MERGE INTO FL_EMP FEMP
         USING FL_EMP_ADMIN FEADM
         ON (FEMP.EMP_NO = FEADM.EMP_NO)
@@ -61,8 +61,37 @@
                 FEMP.PJT_POS_C = #{pjtPosC},
                 FEMP.PJT_LV_C  = #{pjtLvC}
             WHERE FEMP.EMP_NO = FEADM.EMP_NO
-    </update>
+    </update>-->
 
+    <!--  회원정보 수정 -->
+ <!--     <update id="empEdit">
+        MERGE INTO FL_EMP FEMP
+        USING FL_EMP_ADMIN FEADM
+        ON (FEMP.EMP_NO = FEADM.EMP_NO)
+        WHEN MATCHED THEN
+            UPDATE
+            SET FEMP.EMP_NM       = #{empNm},
+                FEMP.EMP_PHONE_NO = #{empPhoneNo},
+                FEMP.EMP_EMER_NO  = #{empEmerNo},
+                FEMP.PJT_POS_C = #{pjtPosC},
+                FEMP.PJT_LV_C  = #{pjtLvC}
+            WHERE FEMP.EMP_NO = #{empNo}
+    </update>-->
+    
+    <!--  회원정보 수정 -->
+    <update id="empEdit">
+        MERGE INTO FL_EMP FEMP
+        USING DUAL
+        ON (FEMP.EMP_NO = #{empNo})
+        WHEN MATCHED THEN
+            UPDATE
+            SET FEMP.EMP_NM       = #{empNm},
+                FEMP.EMP_PHONE_NO = #{empPhoneNo},
+                FEMP.EMP_EMER_NO  = #{empEmerNo},
+                FEMP.PJT_POS_C = #{pjtPosC},
+                FEMP.PJT_LV_C  = #{pjtLvC}
+    </update>    
+    
     <!-- 유저정보 전체 호출 -->
     <select id="empShow" parameterType="EmpVO" resultType="EmpVO">
         SELECT NO            as no,

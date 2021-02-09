@@ -142,7 +142,9 @@ public class MemberController {
 
         service.empEdit(vo);
         model.addAttribute("empEdit", vo);
-        return "/user/empEdit";
+        
+       
+        return "/";
     }
 
     // 비밀번호 찾기 폼
